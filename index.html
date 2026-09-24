@@ -22,7 +22,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&display=swap">
-<link rel="preload" as="image" imagesrcset="img/virtuve-sala-tumsa-s.webp 800w, img/virtuve-sala-tumsa-l.webp 1458w" imagesizes="(max-width: 900px) 100vw, 57vw" fetchpriority="high">
+<noscript><style>.menu-toggle { display: none !important; }</style></noscript>
+<link rel="preload" as="image" imagesrcset="img/virtuve-sala-tumsa-s.webp 800w, img/virtuve-sala-tumsa-l.webp 1298w" imagesizes="(max-width: 900px) 100vw, 57vw" fetchpriority="high">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -95,7 +96,9 @@ h1, h2, h3, p, figure, blockquote, dl, dd { margin: 0; }
 ul, ol { margin: 0; padding: 0; list-style: none; }
 address { font-style: normal; }
 ::selection { color: var(--color-white); background: var(--color-accent); }
-:focus-visible { outline: 3px solid var(--color-highlight); outline-offset: 4px; }
+:focus-visible { outline: 3px solid var(--color-accent-deep); outline-offset: 4px; }
+.section-dark :focus-visible, .yachts :focus-visible, .mobile-menu :focus-visible, .lightbox :focus-visible,
+.category-panel-copy :focus-visible, .mobile-action-bar :focus-visible { outline-color: var(--color-highlight); }
 
 .skip-link {
   position: fixed;
@@ -133,8 +136,9 @@ h1, h2, h3 {
   line-height: 0.98;
   text-wrap: balance;
 }
-h1 { max-width: 11ch; font-size: clamp(3.75rem, 6.1vw, 7.25rem); }
-h2 { max-width: 14ch; font-size: clamp(2.7rem, 5vw, 5.75rem); }
+h1 { max-width: 11ch; font-size: clamp(3.75rem, 6.1vw, 5.6rem); }
+h2 { max-width: 14ch; font-size: clamp(2.7rem, 5vw, 4.5rem); }
+h1, h2 { overflow-wrap: break-word; }
 h3 { font-size: clamp(1.4rem, 2.2vw, 2rem); }
 
 .section-head {
@@ -150,6 +154,7 @@ h3 { font-size: clamp(1.4rem, 2.2vw, 2rem); }
   font-size: clamp(1rem, 1.4vw, 1.2rem);
 }
 .section-head.compact { margin-bottom: clamp(44px, 5vw, 72px); }
+.section-head > p, .yacht-copy > p, .shutter-copy > p { text-wrap: pretty; }
 
 .button {
   display: inline-flex;
@@ -203,13 +208,13 @@ h3 { font-size: clamp(1.4rem, 2.2vw, 2rem); }
   top: 0;
   height: var(--header-height);
   border-bottom: 1px solid rgba(23, 25, 21, 0.11);
-  background: rgba(244, 245, 241, 0.94);
-  transition: box-shadow 240ms ease, background 240ms ease;
+  background: var(--color-paper);
+  transition: box-shadow 240ms ease;
 }
-.site-header.is-scrolled { box-shadow: 0 12px 36px rgba(23, 25, 21, 0.08); background: rgba(244, 245, 241, 0.98); }
+.site-header.is-scrolled { box-shadow: 0 12px 36px rgba(23, 25, 21, 0.08); }
 .header-inner { display: flex; height: 100%; align-items: center; justify-content: space-between; gap: 28px; }
 .brand { display: inline-flex; flex: 0 0 auto; min-height: 44px; align-items: center; }
-.brand img { width: 176px; height: auto; }
+.brand img { width: 176px; height: auto; mix-blend-mode: multiply; }
 .desktop-nav { display: flex; align-items: center; gap: clamp(18px, 2vw, 36px); margin-left: auto; }
 .desktop-nav a, .footer-links a {
   position: relative;
@@ -349,11 +354,11 @@ h3 { font-size: clamp(1.4rem, 2.2vw, 2rem); }
 .hero-media::after {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 55%, rgba(10, 12, 9, 0.55));
+  background: linear-gradient(180deg, transparent 58%, rgba(10, 12, 9, 0.72));
   content: "";
   pointer-events: none;
 }
-.hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%; }
+.hero-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; }
 .hero-media figcaption {
   position: absolute;
   z-index: 1;
@@ -363,9 +368,10 @@ h3 { font-size: clamp(1.4rem, 2.2vw, 2rem); }
   display: flex;
   justify-content: space-between;
   gap: 20px;
-  color: rgba(255, 255, 255, 0.94);
+  color: rgba(255, 255, 255, 0.96);
   font-size: 0.875rem;
   letter-spacing: 0.02em;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.55);
 }
 
 /* Gallery */
@@ -407,7 +413,7 @@ h3 { font-size: clamp(1.4rem, 2.2vw, 2rem); }
 .gallery-image::after {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 50%, rgba(8, 10, 8, 0.74));
+  background: linear-gradient(180deg, transparent 38%, rgba(8, 10, 8, 0.84));
   content: "";
 }
 .gallery-item img, .photo-tile img {
@@ -427,6 +433,7 @@ h3 { font-size: clamp(1.4rem, 2.2vw, 2rem); }
   align-items: flex-end;
   justify-content: space-between;
   gap: 18px;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.5);
 }
 .gallery-caption strong {
   max-width: 22ch;
@@ -497,7 +504,8 @@ h3 { font-size: clamp(1.4rem, 2.2vw, 2rem); }
 .category-panel-copy {
   position: absolute;
   z-index: 1;
-  right: clamp(20px, 4vw, 48px);
+  right: auto;
+  max-width: 30rem;
   bottom: clamp(20px, 4vw, 42px);
   left: clamp(20px, 4vw, 48px);
   padding: clamp(20px, 3vw, 32px);
@@ -571,7 +579,7 @@ h3 { font-size: clamp(1.4rem, 2.2vw, 2rem); }
 .yacht-mosaic {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  grid-auto-rows: clamp(150px, 15vw, 232px);
+  grid-template-rows: clamp(150px, 15vw, 232px) clamp(150px, 15vw, 232px) clamp(210px, 21vw, 325px);
   gap: 16px;
 }
 .yacht-mosaic .t-a { grid-column: 1 / 6; grid-row: 1 / 4; }
@@ -579,17 +587,17 @@ h3 { font-size: clamp(1.4rem, 2.2vw, 2rem); }
 .yacht-mosaic .t-c { grid-column: 9 / 13; grid-row: 1 / 2; }
 .yacht-mosaic .t-d { grid-column: 9 / 13; grid-row: 2 / 3; }
 .yacht-mosaic .t-e { grid-column: 6 / 13; grid-row: 3 / 4; }
-.yacht-mosaic .t-c img { object-position: 50% 55%; }
-.yacht-mosaic .t-d img { object-position: 50% 40%; }
-.yacht-mosaic .t-e img { object-position: 50% 20%; }
+.yacht-mosaic .t-c img { object-position: 50% 40%; }
+.yacht-mosaic .t-d img { object-position: 50% 55%; }
+.yacht-mosaic .t-e img { object-position: 50% 50%; }
 .yacht-credit { margin-top: 18px; color: rgba(255, 255, 255, 0.7); font-size: 0.875rem; }
 
 /* Shutters */
 .shutters { background: var(--color-white); }
 .shutter-grid {
   display: grid;
-  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
-  gap: clamp(48px, 7vw, 120px);
+  grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
+  gap: clamp(48px, 6vw, 100px);
   align-items: center;
 }
 .shutter-copy h2 { margin-bottom: clamp(24px, 3vw, 38px); }
@@ -654,10 +662,13 @@ h3 { font-size: clamp(1.4rem, 2.2vw, 2rem); }
 .proof-grid { display: grid; grid-template-columns: minmax(0, 0.74fr) minmax(480px, 1.26fr); gap: clamp(50px, 9vw, 138px); }
 .proof-copy { position: sticky; top: calc(var(--header-height) + 40px); align-self: start; }
 .proof-copy h2 { margin-bottom: 34px; }
-.proof-copy > p:last-child { max-width: 32rem; color: #c0c6bd; font-size: 1.05rem; }
+.proof-copy > p:not(.section-kicker) { max-width: 32rem; color: #c0c6bd; font-size: 1.05rem; }
+.proof-link { margin-top: 18px; }
+.proof-link a { display: inline-flex; min-height: 44px; align-items: center; color: var(--color-white); font-weight: 600; text-decoration: underline; text-underline-offset: 4px; }
+.proof-link a:hover { color: #b6d0be; }
 .proof-evidence { display: grid; grid-template-columns: minmax(180px, 0.75fr) minmax(280px, 1.25fr); gap: clamp(32px, 4vw, 64px); align-items: start; }
 .proof-evidence figure { overflow: hidden; background: #2c2e29; }
-.proof-evidence figure img { width: 100%; aspect-ratio: 2 / 3; object-fit: cover; }
+.proof-evidence figure img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; }
 .proof-evidence figcaption { padding: 14px 0 0; color: #a9afa6; font-size: 0.875rem; line-height: 1.4; }
 .proof-list li { padding: 22px 0 26px; border-top: 1px solid var(--color-line-dark); }
 .proof-list li:last-child { border-bottom: 1px solid var(--color-line-dark); }
@@ -768,7 +779,7 @@ h3 { font-size: clamp(1.4rem, 2.2vw, 2rem); }
 .site-footer { padding-block: 54px 34px; border-top: 1px solid #d9dcd5; background: var(--color-paper); }
 .footer-main, .footer-bottom { display: flex; align-items: center; justify-content: space-between; gap: 28px; }
 .footer-brand { display: inline-flex; min-height: 44px; align-items: center; }
-.footer-brand img { width: 156px; height: auto; }
+.footer-brand img { width: 156px; height: auto; mix-blend-mode: multiply; }
 .footer-links { display: flex; flex-wrap: wrap; gap: 4px 30px; }
 .footer-links a { min-width: 44px; }
 .footer-bottom {
@@ -780,7 +791,7 @@ h3 { font-size: clamp(1.4rem, 2.2vw, 2rem); }
   font-size: 0.875rem;
 }
 .pometka { max-width: 46rem; text-align: right; }
-.pometka a { display: inline; padding-block: 13px; color: var(--color-ink); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.pometka a { display: inline; padding-block: 13px; white-space: nowrap; color: var(--color-ink); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
 .mobile-action-bar { display: none; }
 
 /* Lightbox */
@@ -796,7 +807,8 @@ h3 { font-size: clamp(1.4rem, 2.2vw, 2rem); }
   background: #10120f;
   box-shadow: var(--shadow-soft);
 }
-.lightbox[open] { display: grid; grid-template-columns: 72px minmax(0, 1fr) 72px; align-items: center; }
+.lightbox[open] { display: grid; grid-template-columns: 72px minmax(0, 1fr) 72px; grid-template-rows: minmax(0, 1fr); align-items: center; }
+html:has(.lightbox[open]) { overflow: hidden; }
 .lightbox::backdrop { background: rgba(12, 14, 11, 0.84); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
 .lightbox figure { display: grid; min-width: 0; height: 100%; grid-template-rows: minmax(0, 1fr) auto; padding: 28px 0 22px; }
 .lightbox figure img { width: 100%; height: 100%; min-height: 0; object-fit: contain; }
@@ -816,7 +828,7 @@ h3 { font-size: clamp(1.4rem, 2.2vw, 2rem); }
 .lightbox-close:hover, .lightbox-nav:hover { background: rgba(255, 255, 255, 0.1); }
 .lightbox-close { position: absolute; z-index: 1; top: 18px; right: 18px; }
 .lightbox-nav { justify-self: center; }
-.noscript { position: fixed; z-index: 1000; right: 18px; bottom: 18px; left: 18px; padding: 14px 18px; color: white; background: #8e261f; text-align: center; }
+.noscript { padding: 14px 18px; color: white; background: #8e261f; text-align: center; }
 
 /* One orchestrated moment: the hero settles in on load */
 @media (prefers-reduced-motion: no-preference) {
@@ -830,12 +842,9 @@ h3 { font-size: clamp(1.4rem, 2.2vw, 2rem); }
 @keyframes hero-rise { from { opacity: 0; transform: translateY(18px); } }
 @keyframes hero-settle { from { opacity: 0.4; transform: scale(1.03); } }
 
-@media (max-width: 1280px) {
-  .header-quote { display: none; }
-}
-
 @media (max-width: 1180px) {
   :root { --header-height: 80px; }
+  .header-quote { display: none; }
   .desktop-nav { gap: 18px; }
   .hero { grid-template-columns: minmax(0, 48%) minmax(0, 52%); }
   .proof-grid, .b2b-grid, .quote-grid, .contact-grid { gap: 72px; }
@@ -880,6 +889,7 @@ h3 { font-size: clamp(1.4rem, 2.2vw, 2rem); }
   .hero-media img { object-position: 40% 40%; }
   .hero-media figcaption { top: 20px; right: var(--gutter); bottom: auto; left: auto; }
   .hero-media figcaption span:first-child { display: none; }
+  .hero :focus-visible { outline-color: var(--color-highlight); }
   .gallery { grid-auto-rows: auto; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
   .gallery-item, .gallery-item-tall, .gallery-item-wide { grid-column: auto; grid-row: auto; aspect-ratio: 1; }
   .gallery-item:first-child { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
@@ -889,6 +899,7 @@ h3 { font-size: clamp(1.4rem, 2.2vw, 2rem); }
   .solution-grid, .proof-grid, .b2b-grid, .quote-grid, .contact-grid { grid-template-columns: 1fr; }
   .solution-grid { gap: 54px; }
   .solution-image { min-height: 560px; }
+  .solution-copy { order: -1; }
   .proof-grid, .b2b-grid, .quote-grid, .contact-grid { gap: 58px; }
   .proof-copy { position: static; }
   .yachts .section-head { grid-template-columns: 1fr; gap: 30px; }
@@ -920,19 +931,19 @@ h3 { font-size: clamp(1.4rem, 2.2vw, 2rem); }
   .gallery-caption span { text-align: left; }
   .category-tab { min-height: 70px; padding-right: 6px; }
   .category-panel { min-height: 440px; }
-  .category-panel-copy { right: 16px; bottom: 16px; left: 16px; }
+  .category-panel-copy { right: 16px; bottom: 16px; left: 16px; max-width: none; }
   .more-categories { grid-template-columns: 1fr; gap: 14px; }
   .more-categories ul { display: grid; gap: 0; }
   .more-categories li:not(:last-child)::after { display: none; }
   .yacht-copy .button, .shutter-copy .button { width: 100%; }
-  .yacht-mosaic { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: auto; gap: 10px; }
+  .yacht-mosaic { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: none; grid-auto-rows: auto; gap: 10px; }
   .yacht-mosaic .photo-tile { grid-column: auto; grid-row: auto; aspect-ratio: 3 / 4; }
   .yacht-mosaic .t-a { grid-column: 1 / -1; aspect-ratio: 4 / 5; }
   .yacht-mosaic .t-e, .yacht-mosaic .t-d { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
   .shutter-leaves { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .shutter-leaves .photo-tile { aspect-ratio: 3 / 4; }
   .shutter-leaves .photo-tile:first-child { grid-row: span 2; aspect-ratio: auto; }
-  .solution-image { min-height: 440px; }
+  .solution-image { min-height: 0; aspect-ratio: 4 / 5; }
   .proof-evidence { grid-template-columns: 1fr; }
   .proof-evidence figure { max-width: 300px; }
   .form-grid { grid-template-columns: 1fr; }
@@ -942,6 +953,7 @@ h3 { font-size: clamp(1.4rem, 2.2vw, 2rem); }
   .contact-list { grid-template-columns: 1fr; gap: 30px; }
   .footer-main, .footer-bottom { align-items: flex-start; flex-direction: column; }
   .footer-links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 20px; width: 100%; }
+  .footer-links a:last-child { grid-column: 1 / -1; }
   .pometka { text-align: left; }
   .site-footer { padding-bottom: calc(96px + env(safe-area-inset-bottom)); }
   .mobile-action-bar {
@@ -971,9 +983,12 @@ h3 { font-size: clamp(1.4rem, 2.2vw, 2rem); }
   }
   .mobile-action-bar a + a { color: var(--color-ink); background: var(--color-highlight); }
   .lightbox { width: 100vw; height: 100svh; border-radius: 0; }
-  .lightbox[open] { grid-template-columns: 50px minmax(0, 1fr) 50px; }
-  .lightbox figure { padding-top: 76px; }
+  .lightbox[open] { grid-template-columns: minmax(0, 1fr); }
+  .lightbox figure { grid-column: 1; grid-row: 1; padding: 76px 0 16px; }
   .lightbox-close, .lightbox-nav { width: 44px; height: 44px; }
+  .lightbox-nav { position: absolute; z-index: 1; top: 50%; transform: translateY(-50%); background: rgba(16, 18, 15, 0.6); }
+  .lightbox-prev { left: 8px; }
+  .lightbox-next { right: 8px; }
   .lightbox figcaption { flex-direction: column; gap: 4px; padding-inline: 4px; }
 }
 
@@ -1019,6 +1034,7 @@ h3 { font-size: clamp(1.4rem, 2.2vw, 2rem); }
 </head>
 <body>
 <a class="skip-link" href="#main" data-i18n="skipLink">Pāriet uz saturu</a>
+<noscript><div class="noscript">Lai darbotos izvēlne, valodu pārslēgšana un galerija, ieslēdziet JavaScript.</div></noscript>
 
 <header class="site-header" data-header>
   <div class="header-inner shell">
@@ -1043,11 +1059,11 @@ h3 { font-size: clamp(1.4rem, 2.2vw, 2rem); }
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Atvērt izvēlni" data-i18n-aria="openMenu"><span></span><span></span></button>
     </div>
   </div>
-  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobilā navigācija" data-i18n-aria="mobileNav" hidden>
+  <div class="mobile-menu" id="mobile-menu" hidden>
     <nav aria-label="Mobilā navigācija" data-i18n-aria="mobileNav">
       <a href="#darbi" data-i18n="navWork">Darbi</a>
       <a href="#mebeles" data-i18n="navFurniture">Mēbeles</a>
-      <a href="#jahtas" data-i18n="navYachtsLong">Mēbeles jahtām</a>
+      <a href="#jahtas" data-i18n="navYachtsLong">Mēbeles un apdare jahtām</a>
       <a href="#slegi" data-i18n="navShuttersLong">Logu slēģi</a>
       <a href="#par-mebtex" data-i18n="navAbout">Par MEBTEX</a>
       <a href="#kontakti" data-i18n="navContacts">Kontakti</a>
@@ -1065,19 +1081,19 @@ h3 { font-size: clamp(1.4rem, 2.2vw, 2rem); }
     <div class="hero-copy shell-left">
       <p class="hero-proof" data-hero-item data-i18n="heroProof">Galdniecības amatnieku uzņēmums kopš 2005. gada</p>
       <h1 id="hero-title" data-hero-item data-i18n="heroTitle">Mēbeles pēc individuāla pasūtījuma</h1>
-      <p class="hero-lede" data-hero-item data-i18n="heroLede">Izgatavojam mēbeles un citus interjera priekšmetus pēc individuāliem pasūtījumiem.</p>
+      <p class="hero-lede" data-hero-item data-i18n="heroLede">Izgatavojam virtuves, skapjus, galdus, iekšdurvis un citus interjera priekšmetus.</p>
       <div class="hero-actions" data-hero-item>
         <a class="button" href="#pieteikums" data-i18n="ctaQuote">Saņemt cenas piedāvājumu</a>
         <a class="text-link" href="#darbi"><span data-i18n="ctaWork">Apskatīt darbus</span><svg aria-hidden="true" viewBox="0 0 20 20"><path d="M4 10h11M11 6l4 4-4 4"/></svg></a>
       </div>
       <dl class="hero-facts" data-hero-item>
-        <div><dt>2005</dt><dd data-i18n="factFounded">dibināts uzņēmums</dd></div>
+        <div><dt>2005</dt><dd data-i18n="factFounded">dibināšanas gads</dd></div>
         <div><dt>Rīga</dt><dd data-i18n="factLocation">Līvas iela 13</dd></div>
       </dl>
     </div>
     <figure class="hero-media">
-      <img src="img/virtuve-sala-tumsa-l.webp" srcset="img/virtuve-sala-tumsa-s.webp 800w, img/virtuve-sala-tumsa-l.webp 1458w" sizes="(max-width: 900px) 100vw, 57vw" width="1458" height="1600" alt="Virtuve ar tumšu salu un apgaismotu vitrīnu" data-i18n-alt="heroAlt" fetchpriority="high">
-      <figcaption><span data-i18n="heroCaption">Virtuve pēc individuāla pasūtījuma</span><span data-i18n="photoCredit">Foto: MEBTEX</span></figcaption>
+      <img src="img/virtuve-sala-tumsa-l.webp" srcset="img/virtuve-sala-tumsa-s.webp 800w, img/virtuve-sala-tumsa-l.webp 1298w" sizes="(max-width: 900px) 100vw, 57vw" width="1298" height="1600" alt="Virtuve ar tumšu salu un apgaismotu vitrīnu" data-i18n-alt="heroAlt" fetchpriority="high">
+      <figcaption><span data-i18n="heroCaption">Virtuve ar tumšu salu</span><span data-i18n="photoCredit">Foto: MEBTEX</span></figcaption>
     </figure>
   </section>
 
@@ -1086,9 +1102,9 @@ h3 { font-size: clamp(1.4rem, 2.2vw, 2rem); }
       <div class="section-head">
         <div>
           <p class="section-kicker" data-i18n="workKicker">Izgatavotie darbi</p>
-          <h2 id="work-title" data-i18n="workTitle">Telpai radīti, nevis plauktam</h2>
+          <h2 id="work-title" data-i18n="workTitle">Pēc mēra, nevis no veikala plaukta</h2>
         </div>
-        <p data-i18n="workIntro">MEBTEX darbi: virtuves, vitrīnas, skapji, plaukti un iekšdurvis.</p>
+        <p data-i18n="workIntro">MEBTEX darbi: virtuves, vitrīnas, skapji, kumodes, plaukti un iekšdurvis.</p>
       </div>
       <div class="gallery" data-gallery="darbi">
         <button class="gallery-item gallery-item-wide" type="button" data-gallery-index="0">
@@ -1096,36 +1112,36 @@ h3 { font-size: clamp(1.4rem, 2.2vw, 2rem); }
           <span class="gallery-caption"><strong data-i18n="galleryTitle0">Virtuve visas sienas garumā</strong><span data-i18n="galleryMeta0">Virtuves</span></span>
         </button>
         <button class="gallery-item gallery-item-tall" type="button" data-gallery-index="1">
-          <span class="gallery-image"><img src="img/virtuve-sala-balta-l.webp" srcset="img/virtuve-sala-balta-s.webp 800w, img/virtuve-sala-balta-l.webp 1200w" sizes="(max-width: 680px) 100vw, (max-width: 900px) 50vw, 31vw" width="1200" height="1600" alt="Balta virtuves sala ar zelta toņa līstēm un plīts virsmu" data-i18n-alt="galleryAlt1"></span>
-          <span class="gallery-caption"><strong data-i18n="galleryTitle1">Virtuves sala</strong><span data-i18n="galleryMeta1">Virtuves</span></span>
+          <span class="gallery-image"><img src="img/vina-vitrina-s.webp" srcset="img/vina-vitrina-s.webp 800w, img/vina-vitrina-l.webp 1200w" sizes="(max-width: 680px) 100vw, (max-width: 900px) 50vw, 31vw" width="1200" height="1392" alt="Tumša vīna vitrīna ar apgaismotiem plauktiem" data-i18n-alt="galleryAlt1"></span>
+          <span class="gallery-caption"><strong data-i18n="galleryTitle1">Vīna vitrīna</strong><span data-i18n="galleryMeta1">Virtuves</span></span>
         </button>
         <button class="gallery-item" type="button" data-gallery-index="2">
-          <span class="gallery-image"><img src="img/vitrinas-s.webp" srcset="img/vitrinas-s.webp 800w, img/vitrinas-l.webp 1200w" sizes="(max-width: 680px) 100vw, (max-width: 900px) 50vw, 31vw" width="1200" height="1600" alt="Divas vitrīnas ar stikla durvīm un iekšējo apgaismojumu" data-i18n-alt="galleryAlt2"></span>
-          <span class="gallery-caption"><strong data-i18n="galleryTitle2">Vitrīnas ar apgaismojumu</strong><span data-i18n="galleryMeta2">Virtuves</span></span>
+          <span class="gallery-image"><img src="img/virtuve-kiegeli-s.webp" srcset="img/virtuve-kiegeli-s.webp 800w, img/virtuve-kiegeli-l.webp 954w" sizes="(max-width: 680px) 100vw, (max-width: 900px) 50vw, 31vw" width="954" height="1600" alt="Virtuve ar koka toņa frontēm, stūra plauktiem un ķieģeļu sienu" data-i18n-alt="galleryAlt2"></span>
+          <span class="gallery-caption"><strong data-i18n="galleryTitle2">Virtuve ar stūra plauktiem</strong><span data-i18n="galleryMeta2">Virtuves</span></span>
         </button>
         <button class="gallery-item" type="button" data-gallery-index="3">
-          <span class="gallery-image"><img src="img/prieksnama-skapji-s.webp" srcset="img/prieksnama-skapji-s.webp 800w, img/prieksnama-skapji-l.webp 1200w" sizes="(max-width: 680px) 100vw, (max-width: 900px) 50vw, 31vw" width="1200" height="1600" alt="Gaiši pelēki spīdīgi skapji un zema kumode priekšnamā" data-i18n-alt="galleryAlt3"></span>
-          <span class="gallery-caption"><strong data-i18n="galleryTitle3">Priekšnama skapji</strong><span data-i18n="galleryMeta3">Skapji un iebūvējamās mēbeles</span></span>
+          <span class="gallery-image"><img src="img/prieksnama-kumode-s.webp" srcset="img/prieksnama-kumode-s.webp 800w, img/prieksnama-kumode-l.webp 1200w" sizes="(max-width: 680px) 100vw, (max-width: 900px) 50vw, 31vw" width="1200" height="1600" alt="Gaiši pelēka spīdīga kumode priekšnamā" data-i18n-alt="galleryAlt3"></span>
+          <span class="gallery-caption"><strong data-i18n="galleryTitle3">Priekšnama kumode</strong><span data-i18n="galleryMeta3">Korpusa mēbeles</span></span>
         </button>
         <button class="gallery-item gallery-item-wide" type="button" data-gallery-index="4">
           <span class="gallery-image"><img src="img/plauktu-siena-l.webp" srcset="img/plauktu-siena-s.webp 800w, img/plauktu-siena-l.webp 1600w" sizes="(max-width: 900px) 100vw, 62vw" width="1600" height="1056" alt="Tumša plauktu sistēma ar restotiem sāniem" data-i18n-alt="galleryAlt4"></span>
           <span class="gallery-caption"><strong data-i18n="galleryTitle4">Plauktu siena</strong><span data-i18n="galleryMeta4">Korpusa mēbeles</span></span>
         </button>
         <button class="gallery-item gallery-item-tall" type="button" data-gallery-index="5">
-          <span class="gallery-image"><img src="img/vina-vitrina-s.webp" srcset="img/vina-vitrina-s.webp 800w, img/vina-vitrina-l.webp 1200w" sizes="(max-width: 680px) 100vw, (max-width: 900px) 50vw, 31vw" width="1200" height="1440" alt="Tumša vīna vitrīna ar apgaismotiem plauktiem pudelēm" data-i18n-alt="galleryAlt5"></span>
-          <span class="gallery-caption"><strong data-i18n="galleryTitle5">Vīna vitrīna</strong><span data-i18n="galleryMeta5">Virtuves</span></span>
+          <span class="gallery-image"><img src="img/virtuve-sala-balta-s.webp" srcset="img/virtuve-sala-balta-s.webp 800w, img/virtuve-sala-balta-l.webp 1200w" sizes="(max-width: 680px) 100vw, (max-width: 900px) 50vw, 31vw" width="1200" height="1600" alt="Balta virtuves sala ar zelta toņa līstēm un plīts virsmu" data-i18n-alt="galleryAlt5"></span>
+          <span class="gallery-caption"><strong data-i18n="galleryTitle5">Virtuves sala</strong><span data-i18n="galleryMeta5">Virtuves</span></span>
         </button>
         <button class="gallery-item" type="button" data-gallery-index="6">
           <span class="gallery-image"><img src="img/iekshdurvis-s.webp" srcset="img/iekshdurvis-s.webp 800w, img/iekshdurvis-l.webp 900w" sizes="(max-width: 680px) 100vw, (max-width: 900px) 50vw, 31vw" width="900" height="1600" alt="Divas gaišas iekšdurvis gaitenī" data-i18n-alt="galleryAlt6"></span>
           <span class="gallery-caption"><strong data-i18n="galleryTitle6">Iekšdurvis gaitenī</strong><span data-i18n="galleryMeta6">Iekšdurvis</span></span>
         </button>
         <button class="gallery-item" type="button" data-gallery-index="7">
-          <span class="gallery-image"><img src="img/virtuve-kiegeli-s.webp" srcset="img/virtuve-kiegeli-s.webp 800w, img/virtuve-kiegeli-l.webp 1200w" sizes="(max-width: 680px) 100vw, (max-width: 900px) 50vw, 31vw" width="1200" height="1600" alt="Virtuve ar koka toņa frontēm, stūra plauktiem un ķieģeļu sienu" data-i18n-alt="galleryAlt7"></span>
-          <span class="gallery-caption"><strong data-i18n="galleryTitle7">Virtuve ar stūra plauktiem</strong><span data-i18n="galleryMeta7">Virtuves</span></span>
+          <span class="gallery-image"><img src="img/piekarams-skapitis-l.webp" srcset="img/piekarams-skapitis-l.webp 768w" sizes="(max-width: 680px) 100vw, (max-width: 900px) 50vw, 31vw" width="768" height="1024" alt="Pie sienas piekarama kumode ar apgaismojumu apakšā" data-i18n-alt="galleryAlt7"></span>
+          <span class="gallery-caption"><strong data-i18n="galleryTitle7">Piekarama kumode ar apgaismojumu</strong><span data-i18n="galleryMeta7">Korpusa mēbeles</span></span>
         </button>
         <button class="gallery-item" type="button" data-gallery-index="8">
           <span class="gallery-image"><img src="img/skapis-ieksa-l.webp" srcset="img/skapis-ieksa-l.webp 768w" sizes="(max-width: 680px) 100vw, (max-width: 900px) 50vw, 31vw" width="768" height="1024" alt="Atvērts skapis ar plauktiem un atvilktnēm iekšpusē" data-i18n-alt="galleryAlt8"></span>
-          <span class="gallery-caption"><strong data-i18n="galleryTitle8">Skapis ar atvilktnēm iekšpusē</strong><span data-i18n="galleryMeta8">Skapji un iebūvējamās mēbeles</span></span>
+          <span class="gallery-caption"><strong data-i18n="galleryTitle8">Skapis ar atvilktnēm iekšpusē</strong><span data-i18n="galleryMeta8">Skapji</span></span>
         </button>
       </div>
     </div>
@@ -1138,7 +1154,7 @@ h3 { font-size: clamp(1.4rem, 2.2vw, 2rem); }
           <p class="section-kicker" data-i18n="categoriesKicker">Iespējas</p>
           <h2 id="categories-title" data-i18n="categoriesTitle">Ko mēs izgatavojam</h2>
         </div>
-        <p data-i18n="categoriesIntro">Pēc individuāliem pasūtījumiem — no galdiem un virtuvēm līdz letēm un veikala aprīkojumam.</p>
+        <p data-i18n="categoriesIntro">No galdiem un virtuvēm līdz letēm un veikala aprīkojumam.</p>
       </div>
       <div class="category-explorer">
         <div class="category-list" role="tablist" aria-orientation="vertical" aria-label="Mēbeļu kategorijas" data-i18n-aria="categoryTabs">
@@ -1151,14 +1167,14 @@ h3 { font-size: clamp(1.4rem, 2.2vw, 2rem); }
         <div class="category-panel" id="category-panel" role="tabpanel" aria-labelledby="category-tab-0">
           <div class="category-panel-copy">
             <h3 data-category-title>Virtuves</h3>
-            <p data-category-description>Virtuves mēbeles un konstrukcijas pēc individuāla pasūtījuma.</p>
+            <p data-category-description>Virtuves mēbeles un konstrukcijas.</p>
             <a class="text-link" href="#pieteikums"><span data-i18n="discussProject">Pārrunāt projektu</span><svg aria-hidden="true" viewBox="0 0 20 20"><path d="M4 10h11M11 6l4 4-4 4"/></svg></a>
           </div>
           <div class="category-stub" data-category-stub data-zaglushka="jūsu darbu foto: galdi, biroja mēbeles, vannas istabas mēbeles" hidden>
             <p class="zg-tag" data-i18n="stubTag">Vajadzīgs no jums</p>
             <p data-category-stub-text>Šeit būs jūsu darbu foto: galdi.</p>
           </div>
-          <img data-category-image src="img/virtuve-fronte-l.webp" srcset="img/virtuve-fronte-s.webp 800w, img/virtuve-fronte-l.webp 1600w" sizes="(max-width: 900px) 100vw, 56vw" width="1600" height="1200" alt="Virtuves — MEBTEX darba piemērs">
+          <img data-category-image src="img/virtuve-telpa-l.webp" srcset="img/virtuve-telpa-s.webp 800w, img/virtuve-telpa-l.webp 1600w" sizes="(max-width: 900px) 100vw, 56vw" width="1600" height="1024" alt="Virtuves — MEBTEX darba piemērs">
         </div>
       </div>
       <div class="more-categories">
@@ -1169,7 +1185,7 @@ h3 { font-size: clamp(1.4rem, 2.2vw, 2rem); }
           <li data-i18n="more2">Iekšdurvis</li>
           <li data-i18n="more3">Bērnu mēbeles</li>
           <li data-i18n="more4">Mēbeļu apgleznošana</li>
-          <li><a href="#jahtas" data-i18n="navYachtsLong">Mēbeles jahtām</a></li>
+          <li><a href="#jahtas" data-i18n="navYachtsLong">Mēbeles un apdare jahtām</a></li>
           <li><a href="#slegi" data-i18n="navShuttersLong">Logu slēģi</a></li>
         </ul>
       </div>
@@ -1184,19 +1200,19 @@ h3 { font-size: clamp(1.4rem, 2.2vw, 2rem); }
           <h2 id="yachts-title" data-i18n="yachtTitle">Mēbeles un apdare jahtām</h2>
         </div>
         <div class="yacht-copy">
-          <p data-i18n="yachtIntro">MEBTEX izgatavo mēbeles un apdari arī jahtām. Fotogrāfijās — mūsu darbi.</p>
+          <p data-i18n="yachtIntro">MEBTEX izgatavo mēbeles un apdari arī jahtām. Fotogrāfijās — mūsu darbi.</p>
           <div data-zaglushka="apraksts par darbiem jahtām: kādas mēbeles un apdari izgatavojat, no kādiem materiāliem">
             <p class="zg-tag" data-i18n="stubTag">Vajadzīgs no jums</p>
-            <p data-i18n="yachtStub">Šeit būs īss apraksts: kādus darbus jahtām veicam un no kādiem materiāliem.</p>
+            <p data-i18n="yachtStub">Šeit būs īss apraksts: kādus darbus jahtām veicam un kādus materiālus izmantojam.</p>
           </div>
           <a class="button button-light" href="#pieteikums" data-project="Mēbeles vai apdare jahtai" data-i18n="yachtCta">Pārrunāt darbu jahtai</a>
         </div>
       </div>
       <div class="yacht-mosaic" data-gallery="jahtas">
         <button class="photo-tile t-a" type="button" data-gallery-index="0"><img src="img/jahta-solins-s.webp" srcset="img/jahta-solins-s.webp 800w, img/jahta-solins-l.webp 1200w" sizes="(max-width: 680px) 100vw, 40vw" width="1200" height="1600" alt="Soliņš ar svītrainiem spilveniem jahtas klājā" data-i18n-alt="yachtAlt0"></button>
-        <button class="photo-tile t-b" type="button" data-gallery-index="1"><img src="img/jahta-klajs-s.webp" srcset="img/jahta-klajs-s.webp 800w, img/jahta-klajs-l.webp 1067w" sizes="(max-width: 680px) 50vw, 24vw" width="1067" height="1600" alt="Gara soliņu rinda jahtas klājā" data-i18n-alt="yachtAlt1"></button>
-        <button class="photo-tile t-c" type="button" data-gallery-index="2"><img src="img/jahta-sturis-s.webp" srcset="img/jahta-sturis-s.webp 800w, img/jahta-sturis-l.webp 1600w" sizes="(max-width: 680px) 50vw, 32vw" width="1600" height="1408" alt="Stūra soliņš ar spilveniem jahtā" data-i18n-alt="yachtAlt2"></button>
-        <button class="photo-tile t-d" type="button" data-gallery-index="3"><img src="img/jahta-detala-s.webp" srcset="img/jahta-detala-s.webp 800w, img/jahta-detala-l.webp 1200w" sizes="(max-width: 680px) 100vw, 32vw" width="1200" height="1600" alt="Mēbeles stūra detaļa ar sieta paneli" data-i18n-alt="yachtAlt3"></button>
+        <button class="photo-tile t-b" type="button" data-gallery-index="1"><img src="img/jahta-klajs-s.webp" srcset="img/jahta-klajs-s.webp 800w, img/jahta-klajs-l.webp 1067w" sizes="(max-width: 680px) 50vw, 24vw" width="1067" height="1600" alt="Garš soliņš ar svītrainiem spilveniem jahtas klājā" data-i18n-alt="yachtAlt1"></button>
+        <button class="photo-tile t-c" type="button" data-gallery-index="2"><img src="img/jahta-detala-s.webp" srcset="img/jahta-detala-s.webp 800w, img/jahta-detala-l.webp 1200w" sizes="(max-width: 680px) 50vw, 32vw" width="1200" height="1600" alt="Mēbeles stūra detaļa ar sieta paneli" data-i18n-alt="yachtAlt3"></button>
+        <button class="photo-tile t-d" type="button" data-gallery-index="3"><img src="img/jahta-sturis-s.webp" srcset="img/jahta-sturis-s.webp 800w, img/jahta-sturis-l.webp 1600w" sizes="(max-width: 680px) 100vw, 32vw" width="1600" height="1408" alt="Stūra soliņš ar spilveniem jahtā" data-i18n-alt="yachtAlt2"></button>
         <button class="photo-tile t-e" type="button" data-gallery-index="4"><img src="img/jahta-lete-s.webp" srcset="img/jahta-lete-s.webp 800w, img/jahta-lete-l.webp 1600w" sizes="(max-width: 680px) 100vw, 56vw" width="1600" height="672" alt="Tumša lete ar gaišu virsmu jahtas klājā" data-i18n-alt="yachtAlt4"></button>
       </div>
       <p class="yacht-credit" data-i18n="yachtCredit">Fotogrāfijas: MEBTEX. Atveriet attēlu, lai to redzētu lielāku.</p>
@@ -1208,17 +1224,17 @@ h3 { font-size: clamp(1.4rem, 2.2vw, 2rem); }
       <div class="shutter-copy">
         <p class="section-kicker" data-i18n="shutterKicker">Logiem</p>
         <h2 id="shutters-title" data-i18n="shutterTitle">Logu slēģi</h2>
-        <p data-i18n="shutterIntro">MEBTEX izgatavo arī logu slēģus. Fotogrāfijās — slēģi darbnīcā.</p>
+        <p data-i18n="shutterIntro">MEBTEX izgatavo arī logu slēģus. Fotogrāfijās — slēģi darbnīcā.</p>
         <div data-zaglushka="apraksts par logu slēģiem: kādus slēģus izgatavojat, no kādiem materiāliem, vai arī uzstādāt">
           <p class="zg-tag" data-i18n="stubTag">Vajadzīgs no jums</p>
-          <p data-i18n="shutterStub">Šeit būs īss apraksts: kādus logu slēģus izgatavojam un no kādiem materiāliem.</p>
+          <p data-i18n="shutterStub">Šeit būs īss apraksts: kādus logu slēģus izgatavojam un kādus materiālus izmantojam.</p>
         </div>
         <a class="button button-ghost" href="#pieteikums" data-project="Logu slēģi" data-i18n="shutterCta">Pajautāt par slēģiem</a>
       </div>
       <div class="shutter-leaves" data-gallery="slegi">
-        <button class="photo-tile" type="button" data-gallery-index="0"><img src="img/slegi-1-s.webp" srcset="img/slegi-1-s.webp 800w, img/slegi-1-l.webp 1200w" sizes="(max-width: 680px) 50vw, (max-width: 1180px) 32vw, 20vw" width="1200" height="1600" alt="Balta slēģa vērtne darbnīcā" data-i18n-alt="shutterAlt0"></button>
-        <button class="photo-tile" type="button" data-gallery-index="1"><img src="img/slegi-2-s.webp" srcset="img/slegi-2-s.webp 800w, img/slegi-2-l.webp 1200w" sizes="(max-width: 680px) 50vw, (max-width: 1180px) 32vw, 20vw" width="1200" height="1600" alt="Vairākas slēģu vērtnes darbnīcā" data-i18n-alt="shutterAlt1"></button>
-        <button class="photo-tile" type="button" data-gallery-index="2"><img src="img/slegi-3-s.webp" srcset="img/slegi-3-s.webp 800w, img/slegi-3-l.webp 1200w" sizes="(max-width: 680px) 50vw, (max-width: 1180px) 32vw, 20vw" width="1200" height="1600" alt="Slēģa vērtne uz āžiem darbnīcā" data-i18n-alt="shutterAlt2"></button>
+        <button class="photo-tile" type="button" data-gallery-index="0"><img src="img/slegi-1-l.webp" srcset="img/slegi-1-l.webp 784w" sizes="(max-width: 680px) 50vw, (max-width: 1180px) 32vw, 22vw" width="784" height="1600" alt="Gaiša slēģa vērtne darbnīcā" data-i18n-alt="shutterAlt0"></button>
+        <button class="photo-tile" type="button" data-gallery-index="1"><img src="img/slegi-2-s.webp" srcset="img/slegi-2-s.webp 800w, img/slegi-2-l.webp 1016w" sizes="(max-width: 680px) 50vw, (max-width: 1180px) 32vw, 22vw" width="1016" height="1600" alt="Vairākas slēģu vērtnes darbnīcā" data-i18n-alt="shutterAlt1"></button>
+        <button class="photo-tile" type="button" data-gallery-index="2"><img src="img/slegi-3-s.webp" srcset="img/slegi-3-s.webp 800w, img/slegi-3-l.webp 1200w" sizes="(max-width: 680px) 50vw, (max-width: 1180px) 32vw, 22vw" width="1200" height="1600" alt="Slēģa vērtne uz āžiem darbnīcā" data-i18n-alt="shutterAlt2"></button>
       </div>
     </div>
   </section>
@@ -1226,7 +1242,7 @@ h3 { font-size: clamp(1.4rem, 2.2vw, 2rem); }
   <section class="solution section" id="par-mebtex" aria-labelledby="solution-title">
     <div class="shell solution-grid">
       <div class="solution-image">
-        <img src="img/detala-s.webp" srcset="img/detala-s.webp 800w, img/detala-l.webp 1200w" sizes="(max-width: 900px) 100vw, 50vw" width="1200" height="1600" alt="Virtuves salas stūris: koka toņa fronte un tumša virsma" data-i18n-alt="detailAlt">
+        <img src="img/detala-s.webp" srcset="img/detala-s.webp 800w, img/detala-l.webp 1056w" sizes="(max-width: 900px) 100vw, 50vw" width="1056" height="1472" alt="Virtuves salas stūris: koka toņa fronte un tumša virsma" data-i18n-alt="detailAlt">
       </div>
       <div class="solution-copy">
         <p class="section-kicker" data-i18n="solutionKicker">Individuāls risinājums</p>
@@ -1251,8 +1267,9 @@ h3 { font-size: clamp(1.4rem, 2.2vw, 2rem); }
     <div class="shell proof-grid">
       <div class="proof-copy">
         <p class="section-kicker" data-i18n="proofKicker">Pieredze, ko var pārbaudīt</p>
-        <h2 id="proof-title" data-i18n="proofTitle">Galdniecības darbs ar amata pamatu</h2>
-        <p data-i18n="proofIntro">SIA MEBTEX ir dibināts 2005. gada 25. oktobrī un reģistrēts Latvijas Amatniecības kamerā.</p>
+        <h2 id="proof-title" data-i18n="proofTitle">Galdniecība kā amats</h2>
+        <p data-i18n="proofIntro">SIA MEBTEX ir dibināta 2005. gada 25. oktobrī un reģistrēta Latvijas Amatniecības kamerā.</p>
+        <p class="proof-link"><a href="https://www.lak.lv/pub/index.php?id=551&amp;view=32" target="_blank" rel="noopener noreferrer" data-i18n="proofLink">Ieraksts Latvijas Amatniecības kameras reģistrā</a></p>
       </div>
       <div class="proof-evidence">
         <figure>
@@ -1263,7 +1280,7 @@ h3 { font-size: clamp(1.4rem, 2.2vw, 2rem); }
           <li><strong data-i18n="proof0Title">Kopš 2005. gada</strong><span data-i18n="proof0Text">Uzņēmums ar ilgstošu galdniecības praksi.</span></li>
           <li><strong data-i18n="proof1Title">Amata meistari</strong><span data-i18n="proof1Text">Uzņēmumā strādā meistari, zeļļi un mācekļi.</span></li>
           <li><strong data-i18n="proof2Title">Nestandarta darbi</strong><span data-i18n="proof2Text">Risinājumi tiek veidoti individuālam pasūtījumam.</span></li>
-          <li><strong data-i18n="proof3Title">Profesionāls serviss</strong><span data-i18n="proof3Text">Katram klientam — individuāla pieeja un profesionāls serviss.</span></li>
+          <li><strong data-i18n="proof3Title">Profesionāls serviss</strong><span data-i18n="proof3Text">Katram klientam — individuāla pieeja un profesionāls serviss.</span></li>
         </ul>
       </div>
     </div>
@@ -1317,7 +1334,7 @@ h3 { font-size: clamp(1.4rem, 2.2vw, 2rem); }
           <a href="mailto:mebtex@inbox.lv">mebtex@inbox.lv</a>
         </div>
       </div>
-      <form class="quote-form" data-quote-form novalidate>
+      <form class="quote-form" data-quote-form action="mailto:mebtex@inbox.lv" method="post" enctype="text/plain" novalidate>
         <div class="form-grid">
           <div class="field">
             <label for="name" data-i18n="fieldName">Vārds</label>
@@ -1335,7 +1352,7 @@ h3 { font-size: clamp(1.4rem, 2.2vw, 2rem); }
             <span class="field-error" id="email-error" data-error-for="email"></span>
           </div>
           <div class="field">
-            <label for="project-type" data-i18n="fieldType">Ko vēlaties izgatavot</label>
+            <label for="project-type" data-i18n="fieldType">Ko vēlaties pasūtīt</label>
             <select id="project-type" name="projectType" required aria-describedby="project-type-error">
               <option value="" data-i18n="selectOption">Izvēlieties</option>
               <option value="Virtuve" data-i18n="category0">Virtuves</option>
@@ -1356,7 +1373,7 @@ h3 { font-size: clamp(1.4rem, 2.2vw, 2rem); }
           </div>
         </div>
         <div class="form-footer">
-          <p data-i18n="formPrivacy">Pieteikums atvērsies jūsu e-pasta programmā — nosūtīšanu kontrolējat jūs pats.</p>
+          <p data-i18n="formPrivacy">Nekas netiek nosūtīts automātiski: vēstuli sūtāt jūs paši.</p>
           <button class="button" type="submit" data-i18n="formSubmit">Nosūtīt pieteikumu MEBTEX</button>
         </div>
         <p class="form-status" role="status" aria-live="polite" aria-atomic="true" data-form-status></p>
@@ -1382,7 +1399,7 @@ h3 { font-size: clamp(1.4rem, 2.2vw, 2rem); }
         </div>
         <div>
           <span data-i18n="contactAddress">Adrese</span>
-          <a href="https://www.google.com/maps/search/?api=1&amp;query=L%C4%ABvas%20iela%2013%2C%20R%C4%ABga" target="_blank" rel="noopener noreferrer">Līvas iela 13, Rīga, LV-1002</a>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=L%C4%ABvas%20iela%2013%2C%20R%C4%ABga%2C%20LV-1002" target="_blank" rel="noopener noreferrer">Līvas iela 13, Rīga, LV-1002</a>
         </div>
         <div>
           <span data-i18n="contactHours">Darba laiks</span>
@@ -1406,8 +1423,8 @@ h3 { font-size: clamp(1.4rem, 2.2vw, 2rem); }
     </div>
   </div>
   <div class="shell footer-bottom">
-    <p>© 2026 SIA MEBTEX, reģ. Nr. 40003777644</p>
-    <p class="pometka" data-kontsept-pometka><span data-i18n="conceptNote">Šī ir neoficiāla mājaslapas koncepcija, nevis SIA MEBTEX oficiālā mājaslapa. Fotogrāfijas — no MEBTEX. Koncepciju sagatavoja Artur Vasilyan:</span> <a href="https://vasilyanaptyp-oss.github.io/">vasilyanaptyp-oss.github.io</a></p>
+    <p>© 2026 SIA MEBTEX, <span data-i18n="regNo">reģ. Nr.</span> 40003777644</p>
+    <p class="pometka" data-kontsept-pometka><span data-i18n="conceptNote">Šī ir neoficiāla mājaslapas koncepcija, nevis SIA MEBTEX oficiālā mājaslapa. Fotogrāfijas — no MEBTEX. Koncepciju sagatavoja Artur Vasilyan:</span> <a href="https://vasilyanaptyp-oss.github.io/">vasilyanaptyp-oss.github.io</a></p>
   </div>
 </footer>
 
@@ -1426,7 +1443,6 @@ h3 { font-size: clamp(1.4rem, 2.2vw, 2rem); }
   <button class="lightbox-nav lightbox-next" type="button" data-lightbox-next aria-label="Nākamais attēls" data-i18n-aria="nextImage"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
 </dialog>
 
-<noscript><div class="noscript">Lai darbotos valodu pārslēgšana un galerija, ieslēdziet JavaScript.</div></noscript>
 
 <script>
 const translations = {
@@ -1443,7 +1459,7 @@ const translations = {
     navWork: "Darbi",
     navFurniture: "Mēbeles",
     navYachts: "Jahtām",
-    navYachtsLong: "Mēbeles jahtām",
+    navYachtsLong: "Mēbeles un apdare jahtām",
     navShutters: "Slēģi",
     navShuttersLong: "Logu slēģi",
     navAbout: "Par MEBTEX",
@@ -1451,56 +1467,56 @@ const translations = {
     ctaQuote: "Saņemt cenas piedāvājumu",
     heroProof: "Galdniecības amatnieku uzņēmums kopš 2005. gada",
     heroTitle: "Mēbeles pēc individuāla pasūtījuma",
-    heroLede: "Izgatavojam mēbeles un citus interjera priekšmetus pēc individuāliem pasūtījumiem.",
+    heroLede: "Izgatavojam virtuves, skapjus, galdus, iekšdurvis un citus interjera priekšmetus.",
     ctaWork: "Apskatīt darbus",
-    factFounded: "dibināts uzņēmums",
+    factFounded: "dibināšanas gads",
     factLocation: "Līvas iela 13",
     heroAlt: "Virtuve ar tumšu salu un apgaismotu vitrīnu",
-    heroCaption: "Virtuve pēc individuāla pasūtījuma",
+    heroCaption: "Virtuve ar tumšu salu",
     photoCredit: "Foto: MEBTEX",
     workKicker: "Izgatavotie darbi",
-    workTitle: "Telpai radīti, nevis plauktam",
-    workIntro: "MEBTEX darbi: virtuves, vitrīnas, skapji, plaukti un iekšdurvis.",
+    workTitle: "Pēc mēra, nevis no veikala plaukta",
+    workIntro: "MEBTEX darbi: virtuves, vitrīnas, skapji, kumodes, plaukti un iekšdurvis.",
     galleryAlt0: "Gaiša virtuves iekārta visas sienas garumā ar vitrīnām un apgaismotu darba zonu",
     galleryTitle0: "Virtuve visas sienas garumā",
     galleryMeta0: "Virtuves",
-    galleryAlt1: "Balta virtuves sala ar zelta toņa līstēm un plīts virsmu",
-    galleryTitle1: "Virtuves sala",
+    galleryAlt1: "Tumša vīna vitrīna ar apgaismotiem plauktiem",
+    galleryTitle1: "Vīna vitrīna",
     galleryMeta1: "Virtuves",
-    galleryAlt2: "Divas vitrīnas ar stikla durvīm un iekšējo apgaismojumu",
-    galleryTitle2: "Vitrīnas ar apgaismojumu",
+    galleryAlt2: "Virtuve ar koka toņa frontēm, stūra plauktiem un ķieģeļu sienu",
+    galleryTitle2: "Virtuve ar stūra plauktiem",
     galleryMeta2: "Virtuves",
-    galleryAlt3: "Gaiši pelēki spīdīgi skapji un zema kumode priekšnamā",
-    galleryTitle3: "Priekšnama skapji",
-    galleryMeta3: "Skapji un iebūvējamās mēbeles",
+    galleryAlt3: "Gaiši pelēka spīdīga kumode priekšnamā",
+    galleryTitle3: "Priekšnama kumode",
+    galleryMeta3: "Korpusa mēbeles",
     galleryAlt4: "Tumša plauktu sistēma ar restotiem sāniem",
     galleryTitle4: "Plauktu siena",
     galleryMeta4: "Korpusa mēbeles",
-    galleryAlt5: "Tumša vīna vitrīna ar apgaismotiem plauktiem pudelēm",
-    galleryTitle5: "Vīna vitrīna",
+    galleryAlt5: "Balta virtuves sala ar zelta toņa līstēm un plīts virsmu",
+    galleryTitle5: "Virtuves sala",
     galleryMeta5: "Virtuves",
     galleryAlt6: "Divas gaišas iekšdurvis gaitenī",
     galleryTitle6: "Iekšdurvis gaitenī",
     galleryMeta6: "Iekšdurvis",
-    galleryAlt7: "Virtuve ar koka toņa frontēm, stūra plauktiem un ķieģeļu sienu",
-    galleryTitle7: "Virtuve ar stūra plauktiem",
-    galleryMeta7: "Virtuves",
+    galleryAlt7: "Pie sienas piekarama kumode ar apgaismojumu apakšā",
+    galleryTitle7: "Piekarama kumode ar apgaismojumu",
+    galleryMeta7: "Korpusa mēbeles",
     galleryAlt8: "Atvērts skapis ar plauktiem un atvilktnēm iekšpusē",
     galleryTitle8: "Skapis ar atvilktnēm iekšpusē",
-    galleryMeta8: "Skapji un iebūvējamās mēbeles",
+    galleryMeta8: "Skapji",
     categoriesKicker: "Iespējas",
     categoriesTitle: "Ko mēs izgatavojam",
-    categoriesIntro: "Pēc individuāliem pasūtījumiem — no galdiem un virtuvēm līdz letēm un veikala aprīkojumam.",
+    categoriesIntro: "No galdiem un virtuvēm līdz letēm un veikala aprīkojumam.",
     categoryTabs: "Mēbeļu kategorijas",
     category0: "Virtuves",
     category1: "Skapji un iebūvējamās mēbeles",
     category2: "Galdi",
     category3: "Biroja mēbeles",
     category4: "Vannas istabas mēbeles",
-    categoryDescription0: "Virtuves mēbeles un konstrukcijas pēc individuāla pasūtījuma.",
+    categoryDescription0: "Virtuves mēbeles un konstrukcijas.",
     categoryDescription1: "Skapji jebkurai gaumei, arī iebūvējamie.",
     categoryDescription2: "Jebkura veida galdi.",
-    categoryDescription3: "Biroja plaukti, galdi un citas mēbeles birojam.",
+    categoryDescription3: "Biroja plaukti, galdi un citas mēbeles.",
     categoryDescription4: "Visa veida interjers vannas istabām.",
     categoryStub: "Šeit būs jūsu darbu foto:",
     categoryImageAlt: "MEBTEX darba piemērs",
@@ -1513,22 +1529,22 @@ const translations = {
     more4: "Mēbeļu apgleznošana",
     yachtKicker: "Jahtām",
     yachtTitle: "Mēbeles un apdare jahtām",
-    yachtIntro: "MEBTEX izgatavo mēbeles un apdari arī jahtām. Fotogrāfijās — mūsu darbi.",
+    yachtIntro: "MEBTEX izgatavo mēbeles un apdari arī jahtām. Fotogrāfijās — mūsu darbi.",
     stubTag: "Vajadzīgs no jums",
-    yachtStub: "Šeit būs īss apraksts: kādus darbus jahtām veicam un no kādiem materiāliem.",
+    yachtStub: "Šeit būs īss apraksts: kādus darbus jahtām veicam un kādus materiālus izmantojam.",
     yachtCta: "Pārrunāt darbu jahtai",
     yachtCredit: "Fotogrāfijas: MEBTEX. Atveriet attēlu, lai to redzētu lielāku.",
     yachtAlt0: "Soliņš ar svītrainiem spilveniem jahtas klājā",
-    yachtAlt1: "Gara soliņu rinda jahtas klājā",
+    yachtAlt1: "Garš soliņš ar svītrainiem spilveniem jahtas klājā",
     yachtAlt2: "Stūra soliņš ar spilveniem jahtā",
     yachtAlt3: "Mēbeles stūra detaļa ar sieta paneli",
     yachtAlt4: "Tumša lete ar gaišu virsmu jahtas klājā",
     shutterKicker: "Logiem",
     shutterTitle: "Logu slēģi",
-    shutterIntro: "MEBTEX izgatavo arī logu slēģus. Fotogrāfijās — slēģi darbnīcā.",
-    shutterStub: "Šeit būs īss apraksts: kādus logu slēģus izgatavojam un no kādiem materiāliem.",
+    shutterIntro: "MEBTEX izgatavo arī logu slēģus. Fotogrāfijās — slēģi darbnīcā.",
+    shutterStub: "Šeit būs īss apraksts: kādus logu slēģus izgatavojam un kādus materiālus izmantojam.",
     shutterCta: "Pajautāt par slēģiem",
-    shutterAlt0: "Balta slēģa vērtne darbnīcā",
+    shutterAlt0: "Gaiša slēģa vērtne darbnīcā",
     shutterAlt1: "Vairākas slēģu vērtnes darbnīcā",
     shutterAlt2: "Slēģa vērtne uz āžiem darbnīcā",
     solutionKicker: "Individuāls risinājums",
@@ -1543,8 +1559,9 @@ const translations = {
     ctaDiscuss: "Pieteikt sava projekta aprēķinu",
     detailAlt: "Virtuves salas stūris: koka toņa fronte un tumša virsma",
     proofKicker: "Pieredze, ko var pārbaudīt",
-    proofTitle: "Galdniecības darbs ar amata pamatu",
-    proofIntro: "SIA MEBTEX ir dibināts 2005. gada 25. oktobrī un reģistrēts Latvijas Amatniecības kamerā.",
+    proofTitle: "Galdniecība kā amats",
+    proofIntro: "SIA MEBTEX ir dibināta 2005. gada 25. oktobrī un reģistrēta Latvijas Amatniecības kamerā.",
+    proofLink: "Ieraksts Latvijas Amatniecības kameras reģistrā",
     proofPhotoAlt: "Zelta toņa rokturis un līste uz gaišas virtuves fasādes",
     proofPhotoCaption: "Virtuves fasādes detaļa. Foto: MEBTEX",
     proof0Title: "Kopš 2005. gada",
@@ -1554,7 +1571,7 @@ const translations = {
     proof2Title: "Nestandarta darbi",
     proof2Text: "Risinājumi tiek veidoti individuālam pasūtījumam.",
     proof3Title: "Profesionāls serviss",
-    proof3Text: "Katram klientam — individuāla pieeja un profesionāls serviss.",
+    proof3Text: "Katram klientam — individuāla pieeja un profesionāls serviss.",
     b2bKicker: "Sadarbībai",
     b2bTitle: "Pakalpojumi profesionāļiem",
     b2bIntro: "SIA MEBTEX sniedz galdniecības pakalpojumus arī profesionāļiem.",
@@ -1574,14 +1591,14 @@ const translations = {
     fieldName: "Vārds",
     fieldPhone: "Tālrunis",
     fieldEmail: "E-pasts",
-    fieldType: "Ko vēlaties izgatavot",
+    fieldType: "Ko vēlaties pasūtīt",
     fieldMessage: "Projekta apraksts",
     selectOption: "Izvēlieties",
     optYacht: "Mēbeles vai apdare jahtai",
     optShutters: "Logu slēģi",
     otherOption: "Cits",
     messagePlaceholder: "Telpa, izmēri, materiāli vai cita būtiska informācija",
-    formPrivacy: "Pieteikums atvērsies jūsu e-pasta programmā — nosūtīšanu kontrolējat jūs pats.",
+    formPrivacy: "Nekas netiek nosūtīts automātiski: vēstuli sūtāt jūs paši.",
     formSubmit: "Nosūtīt pieteikumu MEBTEX",
     contactKicker: "Kontakti",
     contactTitle: "Sazinieties ar MEBTEX",
@@ -1590,7 +1607,8 @@ const translations = {
     contactAddress: "Adrese",
     contactHours: "Darba laiks",
     privacy: "Privātuma politika",
-    conceptNote: "Šī ir neoficiāla mājaslapas koncepcija, nevis SIA MEBTEX oficiālā mājaslapa. Fotogrāfijas — no MEBTEX. Koncepciju sagatavoja Artur Vasilyan:",
+    regNo: "reģ. Nr.",
+    conceptNote: "Šī ir neoficiāla mājaslapas koncepcija, nevis SIA MEBTEX oficiālā mājaslapa. Fotogrāfijas — no MEBTEX. Koncepciju sagatavoja Artur Vasilyan:",
     quickActions: "Ātrās darbības",
     callAction: "Zvanīt",
     ctaShort: "Aprēķināt cenu",
@@ -1612,7 +1630,7 @@ const translations = {
     emailMessage: "Apraksts"
   },
   ru: {
-    pageTitle: "SIA MEBTEX | Мебель по индивидуальному заказу",
+    pageTitle: "SIA MEBTEX | Мебель на заказ",
     pageDescription: "SIA MEBTEX, Рига: мебель по индивидуальному заказу, мебель и отделка для яхт, оконные ставни. Неофициальная концепция главной страницы.",
     skipLink: "Перейти к содержанию",
     brandHome: "Главная страница MEBTEX",
@@ -1624,65 +1642,65 @@ const translations = {
     navWork: "Работы",
     navFurniture: "Мебель",
     navYachts: "Для яхт",
-    navYachtsLong: "Мебель для яхт",
+    navYachtsLong: "Мебель и отделка для яхт",
     navShutters: "Ставни",
     navShuttersLong: "Оконные ставни",
     navAbout: "О MEBTEX",
     navContacts: "Контакты",
     ctaQuote: "Запросить расчёт цены",
     heroProof: "Столярное ремесленное предприятие с 2005 года",
-    heroTitle: "Мебель по индивидуальному заказу",
-    heroLede: "Изготавливаем мебель и другие предметы интерьера по индивидуальным заказам.",
+    heroTitle: "Мебель на заказ",
+    heroLede: "Изготавливаем кухни, шкафы, столы, межкомнатные двери и другие предметы интерьера.",
     ctaWork: "Смотреть работы",
-    factFounded: "год основания компании",
+    factFounded: "год основания",
     factLocation: "Līvas iela 13",
     heroAlt: "Кухня с тёмным островом и подсвеченной витриной",
-    heroCaption: "Кухня по индивидуальному заказу",
+    heroCaption: "Кухня с тёмным островом",
     photoCredit: "Фото: MEBTEX",
     workKicker: "Выполненные работы",
-    workTitle: "Создано для пространства, а не для полки",
-    workIntro: "Работы MEBTEX: кухни, витрины, шкафы, стеллажи и межкомнатные двери.",
+    workTitle: "По мерке, а не с полки магазина",
+    workIntro: "Работы MEBTEX: кухни, витрины, шкафы, комоды, стеллажи и межкомнатные двери.",
     galleryAlt0: "Светлая кухня во всю стену с витринами и подсветкой рабочей зоны",
     galleryTitle0: "Кухня во всю стену",
     galleryMeta0: "Кухни",
-    galleryAlt1: "Белый кухонный остров с золотистыми планками и варочной панелью",
-    galleryTitle1: "Кухонный остров",
+    galleryAlt1: "Тёмная винная витрина с подсвеченными полками",
+    galleryTitle1: "Винная витрина",
     galleryMeta1: "Кухни",
-    galleryAlt2: "Две витрины со стеклянными дверцами и внутренней подсветкой",
-    galleryTitle2: "Витрины с подсветкой",
+    galleryAlt2: "Кухня с фасадами в тоне дерева, угловыми полками и кирпичной стеной",
+    galleryTitle2: "Кухня с угловыми полками",
     galleryMeta2: "Кухни",
-    galleryAlt3: "Светло-серые глянцевые шкафы и низкий комод в прихожей",
-    galleryTitle3: "Шкафы в прихожей",
-    galleryMeta3: "Шкафы и встроенная мебель",
+    galleryAlt3: "Светло-серый глянцевый комод в прихожей",
+    galleryTitle3: "Комод в прихожей",
+    galleryMeta3: "Корпусная мебель",
     galleryAlt4: "Тёмный стеллаж с решётчатыми боковинами",
     galleryTitle4: "Стеллаж во всю стену",
     galleryMeta4: "Корпусная мебель",
-    galleryAlt5: "Тёмная винная витрина с подсвеченными полками для бутылок",
-    galleryTitle5: "Винная витрина",
+    galleryAlt5: "Белый кухонный остров с золотистыми планками и варочной панелью",
+    galleryTitle5: "Кухонный остров",
     galleryMeta5: "Кухни",
     galleryAlt6: "Две светлые межкомнатные двери в коридоре",
     galleryTitle6: "Двери в коридоре",
     galleryMeta6: "Межкомнатные двери",
-    galleryAlt7: "Кухня с фасадами в тоне дерева, угловыми полками и кирпичной стеной",
-    galleryTitle7: "Кухня с угловыми полками",
-    galleryMeta7: "Кухни",
+    galleryAlt7: "Подвесная тумба с подсветкой снизу",
+    galleryTitle7: "Подвесная тумба с подсветкой",
+    galleryMeta7: "Корпусная мебель",
     galleryAlt8: "Открытый шкаф с полками и ящиками внутри",
     galleryTitle8: "Шкаф с ящиками внутри",
-    galleryMeta8: "Шкафы и встроенная мебель",
+    galleryMeta8: "Шкафы",
     categoriesKicker: "Возможности",
     categoriesTitle: "Что мы изготавливаем",
-    categoriesIntro: "По индивидуальным заказам — от столов и кухонь до стоек и торгового оборудования.",
+    categoriesIntro: "От столов и кухонь до стоек и торгового оборудования.",
     categoryTabs: "Категории мебели",
     category0: "Кухни",
     category1: "Шкафы и встроенная мебель",
     category2: "Столы",
     category3: "Офисная мебель",
     category4: "Мебель для ванной",
-    categoryDescription0: "Кухонная мебель и конструкции по индивидуальному заказу.",
+    categoryDescription0: "Кухонная мебель и конструкции.",
     categoryDescription1: "Шкафы на любой вкус, в том числе встроенные.",
     categoryDescription2: "Столы любого вида.",
-    categoryDescription3: "Офисные стеллажи, столы и другая мебель для офиса.",
-    categoryDescription4: "Любой интерьер для ванных комнат.",
+    categoryDescription3: "Офисные стеллажи, столы и другая мебель.",
+    categoryDescription4: "Интерьеры ванных комнат любого вида.",
     categoryStub: "Здесь будут фото ваших работ:",
     categoryImageAlt: "пример работы MEBTEX",
     discussProject: "Обсудить проект",
@@ -1694,7 +1712,7 @@ const translations = {
     more4: "Роспись мебели",
     yachtKicker: "Для яхт",
     yachtTitle: "Мебель и отделка для яхт",
-    yachtIntro: "MEBTEX изготавливает мебель и отделку и для яхт. На фотографиях — наши работы.",
+    yachtIntro: "MEBTEX изготавливает мебель и отделку также для яхт. На фотографиях — наши работы.",
     stubTag: "Нужно от вас",
     yachtStub: "Здесь будет короткое описание: какие работы мы выполняем для яхт и из каких материалов.",
     yachtCta: "Обсудить работу для яхты",
@@ -1706,26 +1724,27 @@ const translations = {
     yachtAlt4: "Тёмная стойка со светлой столешницей на палубе яхты",
     shutterKicker: "Для окон",
     shutterTitle: "Оконные ставни",
-    shutterIntro: "MEBTEX изготавливает и оконные ставни. На фотографиях — ставни в мастерской.",
+    shutterIntro: "MEBTEX изготавливает и оконные ставни. На фотографиях — ставни в мастерской.",
     shutterStub: "Здесь будет короткое описание: какие ставни мы изготавливаем и из каких материалов.",
     shutterCta: "Спросить о ставнях",
-    shutterAlt0: "Белая створка ставня в мастерской",
+    shutterAlt0: "Светлая створка ставня в мастерской",
     shutterAlt1: "Несколько створок ставен в мастерской",
     shutterAlt2: "Створка ставня на козлах в мастерской",
     solutionKicker: "Индивидуальное решение",
     solutionTitle: "От замысла до конкретного помещения",
     solutionIntro: "MEBTEX изготавливает корпусную и встроенную мебель, а также межкомнатные двери по индивидуальному заказу.",
-    materialsTitle: "Материалы для работы",
+    materialsTitle: "Материалы, с которыми работаем",
     material0: "Искусственный и натуральный шпон",
     material1: "Фанера и дерево",
-    material2: "MDF",
+    material2: "МДФ",
     material3: "Ламинированные и неламинированные древесно-стружечные плиты",
     material4: "Декоративные плиты",
     ctaDiscuss: "Рассчитать стоимость проекта",
     detailAlt: "Угол кухонного острова: фасад в тоне дерева и тёмная столешница",
-    proofKicker: "Проверяемый опыт",
-    proofTitle: "Столярная работа на основе ремесла",
+    proofKicker: "Опыт, который можно проверить",
+    proofTitle: "Столярное дело как ремесло",
     proofIntro: "SIA MEBTEX основана 25 октября 2005 года и зарегистрирована в Латвийской палате ремёсел.",
+    proofLink: "Запись в реестре Латвийской палаты ремёсел",
     proofPhotoAlt: "Золотистая ручка и планка на светлом кухонном фасаде",
     proofPhotoCaption: "Деталь кухонного фасада. Фото: MEBTEX",
     proof0Title: "С 2005 года",
@@ -1735,15 +1754,15 @@ const translations = {
     proof2Title: "Нестандартные работы",
     proof2Text: "Решения создаются под индивидуальный заказ.",
     proof3Title: "Профессиональный сервис",
-    proof3Text: "Каждому клиенту — индивидуальный подход и профессиональный сервис.",
-    b2bKicker: "Для сотрудничества",
+    proof3Text: "Каждому клиенту — индивидуальный подход и профессиональный сервис.",
+    b2bKicker: "Для партнёров",
     b2bTitle: "Услуги для профессионалов",
     b2bIntro: "SIA MEBTEX оказывает столярные услуги и профессионалам.",
     service0: "Распил деталей",
     service1: "Раскрой деталей",
     service2: "Облицовка кромок",
     service3: "Шпонирование",
-    service4: "Шпонирование прямых и гнутоклееных деталей",
+    service4: "Шпонирование прямых и гнутоклеёных деталей",
     service5: "Транспортные услуги",
     testimonialKicker: "Отзывы",
     testimonialTitle: "Клиенты о сотрудничестве",
@@ -1755,14 +1774,14 @@ const translations = {
     fieldName: "Имя",
     fieldPhone: "Телефон",
     fieldEmail: "Электронная почта",
-    fieldType: "Что вы хотите изготовить",
+    fieldType: "Что вы хотите заказать",
     fieldMessage: "Описание проекта",
     selectOption: "Выберите",
     optYacht: "Мебель или отделка для яхты",
     optShutters: "Оконные ставни",
     otherOption: "Другое",
     messagePlaceholder: "Помещение, размеры, материалы или другая важная информация",
-    formPrivacy: "Заявка откроется в вашей почтовой программе — отправляете её вы сами.",
+    formPrivacy: "Ничего не отправляется автоматически: письмо отправляете вы сами.",
     formSubmit: "Отправить заявку в MEBTEX",
     contactKicker: "Контакты",
     contactTitle: "Свяжитесь с MEBTEX",
@@ -1771,7 +1790,8 @@ const translations = {
     contactAddress: "Адрес",
     contactHours: "Время работы",
     privacy: "Политика конфиденциальности",
-    conceptNote: "Это неофициальная концепция сайта, а не официальный сайт SIA MEBTEX. Фотографии — от MEBTEX. Концепцию подготовил Artur Vasilyan:",
+    regNo: "рег. №",
+    conceptNote: "Это неофициальная концепция сайта, а не официальный сайт SIA MEBTEX. Фотографии предоставлены MEBTEX. Концепцию подготовил Artur Vasilyan:",
     quickActions: "Быстрые действия",
     callAction: "Позвонить",
     ctaShort: "Рассчитать цену",
@@ -1782,7 +1802,7 @@ const translations = {
     nameError: "Укажите не менее 2 букв.",
     phoneError: "Укажите корректный номер телефона.",
     emailError: "Укажите корректный адрес электронной почты.",
-    messageError: "Опишите идею минимум в 10 символах.",
+    messageError: "Опишите идею подробнее — не менее 10 символов.",
     lengthError: "Сократите введённый текст.",
     formReady: "Заявка подготовлена. Открываем вашу почтовую программу.",
     emailSubject: "Новая заявка на мебельный проект",
@@ -1793,8 +1813,8 @@ const translations = {
     emailMessage: "Описание"
   },
   en: {
-    pageTitle: "SIA MEBTEX | Bespoke Furniture Made to Order",
-    pageDescription: "SIA MEBTEX, Riga: furniture made to order, yacht furniture and interior finishing, window shutters. Unofficial homepage concept.",
+    pageTitle: "SIA MEBTEX | Furniture Made to Order",
+    pageDescription: "SIA MEBTEX, Riga: furniture made to order, furniture and finishing for yachts, window shutters. Unofficial homepage concept.",
     skipLink: "Skip to content",
     brandHome: "MEBTEX homepage",
     mainNav: "Main navigation",
@@ -1805,54 +1825,54 @@ const translations = {
     navWork: "Work",
     navFurniture: "Furniture",
     navYachts: "Yachts",
-    navYachtsLong: "Yacht furniture",
+    navYachtsLong: "Yacht furniture and finishing",
     navShutters: "Shutters",
     navShuttersLong: "Window shutters",
     navAbout: "About MEBTEX",
-    navContacts: "Contacts",
+    navContacts: "Contact",
     ctaQuote: "Request a price quote",
     heroProof: "A cabinetmaking craft company since 2005",
-    heroTitle: "Bespoke furniture made to order",
-    heroLede: "We make furniture and other interior pieces to individual orders.",
+    heroTitle: "Furniture made to order",
+    heroLede: "We make kitchens, wardrobes, tables, interior doors and other interior pieces.",
     ctaWork: "View our work",
-    factFounded: "company founded",
+    factFounded: "year founded",
     factLocation: "Līvas iela 13",
     heroAlt: "Kitchen with a dark island and a lit glass cabinet",
-    heroCaption: "Kitchen made to order",
+    heroCaption: "Kitchen with a dark island",
     photoCredit: "Photo: MEBTEX",
     workKicker: "Completed work",
     workTitle: "Made for the room, not the shelf",
-    workIntro: "MEBTEX work: kitchens, glass cabinets, wardrobes, shelving and interior doors.",
+    workIntro: "MEBTEX work: kitchens, glass cabinets, wardrobes, sideboards, shelving and interior doors.",
     galleryAlt0: "Light wall-length kitchen with glass cabinets and a lit worktop area",
     galleryTitle0: "Wall-length kitchen",
     galleryMeta0: "Kitchens",
-    galleryAlt1: "White kitchen island with gold-tone trims and a hob",
-    galleryTitle1: "Kitchen island",
+    galleryAlt1: "Dark wine cabinet with lit shelves",
+    galleryTitle1: "Wine cabinet",
     galleryMeta1: "Kitchens",
-    galleryAlt2: "Two glass-door cabinets with interior lighting",
-    galleryTitle2: "Lit glass cabinets",
+    galleryAlt2: "Kitchen with wood-tone fronts, corner shelves and a brick wall",
+    galleryTitle2: "Kitchen with corner shelves",
     galleryMeta2: "Kitchens",
-    galleryAlt3: "Light grey gloss cabinets and a low sideboard in a hallway",
-    galleryTitle3: "Hallway cabinets",
-    galleryMeta3: "Cabinets and built-in furniture",
+    galleryAlt3: "Light grey gloss sideboard in a hallway",
+    galleryTitle3: "Hallway sideboard",
+    galleryMeta3: "Cabinet furniture",
     galleryAlt4: "Dark shelving unit with slatted sides",
     galleryTitle4: "Shelving wall",
     galleryMeta4: "Cabinet furniture",
-    galleryAlt5: "Dark wine cabinet with lit bottle shelves",
-    galleryTitle5: "Wine cabinet",
+    galleryAlt5: "White kitchen island with gold-tone trims and a hob",
+    galleryTitle5: "Kitchen island",
     galleryMeta5: "Kitchens",
     galleryAlt6: "Two light interior doors in a corridor",
     galleryTitle6: "Corridor doors",
     galleryMeta6: "Interior doors",
-    galleryAlt7: "Kitchen with wood-tone fronts, corner shelves and a brick wall",
-    galleryTitle7: "Kitchen with corner shelves",
-    galleryMeta7: "Kitchens",
+    galleryAlt7: "Wall-hung cabinet with lighting underneath",
+    galleryTitle7: "Wall-hung cabinet with lighting",
+    galleryMeta7: "Cabinet furniture",
     galleryAlt8: "Open wardrobe with shelves and drawers inside",
     galleryTitle8: "Wardrobe with inner drawers",
-    galleryMeta8: "Cabinets and built-in furniture",
+    galleryMeta8: "Cabinets",
     categoriesKicker: "Capabilities",
     categoriesTitle: "What we make",
-    categoriesIntro: "Made to individual orders — from tables and kitchens to counters and shop fittings.",
+    categoriesIntro: "From tables and kitchens to counters and shop fittings.",
     categoryTabs: "Furniture categories",
     category0: "Kitchens",
     category1: "Cabinets and built-in furniture",
@@ -1862,20 +1882,20 @@ const translations = {
     categoryDescription0: "Kitchen furniture and structures made to order.",
     categoryDescription1: "Cabinets for any taste, built-in ones included.",
     categoryDescription2: "Tables of every kind.",
-    categoryDescription3: "Office shelving, desks and other office furniture.",
+    categoryDescription3: "Office shelving, desks and other furniture.",
     categoryDescription4: "All kinds of bathroom interiors.",
     categoryStub: "Photos of your work will go here:",
     categoryImageAlt: "an example of MEBTEX work",
     discussProject: "Discuss a project",
     moreCategories: "Also",
     more0: "Counters",
-    more1: "Shop equipment",
+    more1: "Shop fittings",
     more2: "Interior doors",
     more3: "Children’s furniture",
     more4: "Furniture painting",
     yachtKicker: "For yachts",
     yachtTitle: "Furniture and finishing for yachts",
-    yachtIntro: "MEBTEX also makes furniture and interior finishing for yachts. The photos show our work.",
+    yachtIntro: "MEBTEX also makes furniture and finishing for yachts. The photos show our work.",
     stubTag: "Needed from you",
     yachtStub: "A short description will go here: what work we do for yachts and which materials we use.",
     yachtCta: "Discuss a yacht project",
@@ -1890,12 +1910,12 @@ const translations = {
     shutterIntro: "MEBTEX also makes window shutters. The photos show shutters in the workshop.",
     shutterStub: "A short description will go here: what shutters we make and from which materials.",
     shutterCta: "Ask about shutters",
-    shutterAlt0: "White shutter leaf in the workshop",
+    shutterAlt0: "Light-coloured shutter leaf in the workshop",
     shutterAlt1: "Several shutter leaves in the workshop",
     shutterAlt2: "Shutter leaf on trestles in the workshop",
     solutionKicker: "Individual solution",
     solutionTitle: "From an idea to a specific room",
-    solutionIntro: "MEBTEX makes cabinet and built-in furniture, as well as interior doors, to individual order.",
+    solutionIntro: "MEBTEX makes cabinet and built-in furniture, as well as interior doors, made to order.",
     materialsTitle: "Materials we work with",
     material0: "Artificial and natural veneers",
     material1: "Plywood and timber",
@@ -1904,9 +1924,10 @@ const translations = {
     material4: "Decorative boards",
     ctaDiscuss: "Request a project quote",
     detailAlt: "Kitchen island corner: wood-tone front and a dark top",
-    proofKicker: "Verifiable experience",
+    proofKicker: "Experience you can check",
     proofTitle: "Cabinetmaking grounded in craft",
     proofIntro: "SIA MEBTEX was founded on 25 October 2005 and is registered with the Latvian Chamber of Crafts.",
+    proofLink: "Entry in the Latvian Chamber of Crafts register",
     proofPhotoAlt: "Gold-tone handle and trim on a light kitchen front",
     proofPhotoCaption: "Kitchen front detail. Photo: MEBTEX",
     proof0Title: "Since 2005",
@@ -1914,17 +1935,17 @@ const translations = {
     proof1Title: "Craft professionals",
     proof1Text: "The company employs masters, journeymen and apprentices.",
     proof2Title: "Non-standard work",
-    proof2Text: "Solutions are made for individual orders.",
+    proof2Text: "Solutions are made to order.",
     proof3Title: "Professional service",
     proof3Text: "Every client gets an individual approach and professional service.",
-    b2bKicker: "For collaboration",
+    b2bKicker: "For the trade",
     b2bTitle: "Services for professionals",
     b2bIntro: "SIA MEBTEX also provides joinery services to professionals.",
-    service0: "Part sawing",
-    service1: "Part cutting",
+    service0: "Panel sawing",
+    service1: "Cutting to size",
     service2: "Edge banding",
     service3: "Veneering",
-    service4: "Veneering curved laminated and straight parts",
+    service4: "Veneering bent-laminated and straight parts",
     service5: "Transport services",
     testimonialKicker: "Testimonials",
     testimonialTitle: "What clients say",
@@ -1943,15 +1964,16 @@ const translations = {
     optShutters: "Window shutters",
     otherOption: "Other",
     messagePlaceholder: "Room, dimensions, materials or other important information",
-    formPrivacy: "The enquiry opens in your email app — you decide whether to send it.",
+    formPrivacy: "Nothing is sent automatically: you send the email yourself.",
     formSubmit: "Send enquiry to MEBTEX",
-    contactKicker: "Contacts",
+    contactKicker: "Contact",
     contactTitle: "Contact MEBTEX",
     contactPhone: "Phone",
     contactEmail: "Email",
     contactAddress: "Address",
     contactHours: "Working hours",
     privacy: "Privacy policy",
+    regNo: "Reg. No.",
     conceptNote: "This is an unofficial website concept, not the official SIA MEBTEX website. Photos from MEBTEX. Concept prepared by Artur Vasilyan:",
     quickActions: "Quick actions",
     callAction: "Call",
@@ -1964,7 +1986,7 @@ const translations = {
     phoneError: "Enter a valid phone number.",
     emailError: "Enter a valid email address.",
     messageError: "Describe your idea in at least 10 characters.",
-    lengthError: "Shorten the entered text.",
+    lengthError: "Please shorten the text.",
     formReady: "Your enquiry is ready. Opening your email app.",
     emailSubject: "New furniture project enquiry",
     emailName: "Name",
@@ -1982,20 +2004,20 @@ const testimonialData = {
     { author: "Marta M.", quote: "“Mūsu mājai bija nepieciešams specifisks galds no ozola. Mebtex ātros termiņos izveidoja mūsu pasūtījumu. Esam ļoti priecīgi un rekomendējam ikvienam!”" }
   ],
   ru: [
-    { author: "Aivars A.", quote: "«Мы работаем с Mebtex с 2008 года и довольны сотрудничеством. Они умеют создавать нестандартные решения в короткие сроки. Рекомендуем всем!»" },
+    { author: "Aivars A.", quote: "«Мы работаем с Mebtex с 2008 года и довольны сотрудничеством, потому что только они умеют делать нестандартные решения в короткие сроки. Рекомендуем всем!»" },
     { author: "Jānis Z.", quote: "«Спасибо мастерам Mebtex. Они изготовили столы для нашего офиса в рекордно короткий срок и по разумной цене. Очень рекомендую этих специалистов!»" },
     { author: "Marta M.", quote: "«Для нашего дома был нужен особый дубовый стол. Mebtex быстро выполнил наш заказ. Мы очень довольны и рекомендуем их всем!»" }
   ],
   en: [
-    { author: "Aivars A.", quote: "“We have worked with Mebtex since 2008 and are happy with the collaboration. They can create non-standard solutions within a short timeframe. We recommend them to everyone!”" },
+    { author: "Aivars A.", quote: "“We have worked with Mebtex since 2008 and are happy with the collaboration, because they are the only ones who can deliver non-standard solutions at short notice. We recommend them to everyone!”" },
     { author: "Jānis Z.", quote: "“Thank you to the Mebtex craftsmen. They made desks for our office in record time and at a reasonable price. I strongly recommend these specialists!”" },
     { author: "Marta M.", quote: "“Our home needed a specific oak table. Mebtex completed our order quickly. We are very happy and recommend them to everyone!”" }
   ]
 };
 
 const categoryImages = [
-  { name: "virtuve-fronte", l: 1600 },
-  { name: "skapis-rokturi", l: 1125 },
+  { name: "virtuve-telpa", l: 1600 },
+  { name: "skapis-prieksnams", l: 1600 },
   null,
   null,
   null
@@ -2194,7 +2216,7 @@ function updateCategory(index, animate = true) {
       image.srcset = sources.srcset;
       image.src = sources.src;
     }
-    image.alt = `${dictionary[`category${safeIndex}`]} — ${dictionary.categoryImageAlt}`;
+    image.alt = `${dictionary[`category${safeIndex}`]} — ${dictionary.categoryImageAlt}`;
   } else if (stubText) {
     stubText.textContent = `${dictionary.categoryStub} ${dictionary[`category${safeIndex}`].toLocaleLowerCase(currentLanguage)}.`;
   }
@@ -2273,7 +2295,10 @@ function setupGallery() {
   qs("[data-lightbox-prev]")?.addEventListener("click", () => updateLightbox(currentGalleryIndex - 1));
   qs("[data-lightbox-next]")?.addEventListener("click", () => updateLightbox(currentGalleryIndex + 1));
   dialog.addEventListener("click", (event) => {
-    if (event.target === dialog) close();
+    if (event.target !== dialog) return;
+    const box = dialog.getBoundingClientRect();
+    const outside = event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom;
+    if (outside) close();
   });
   dialog.addEventListener("close", () => {
     if (galleryFocusReturn instanceof HTMLElement && galleryFocusReturn.isConnected) galleryFocusReturn.focus();
