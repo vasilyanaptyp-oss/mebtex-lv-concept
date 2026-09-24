@@ -154,7 +154,7 @@ h3 { font-size: clamp(1.4rem, 2.2vw, 2rem); }
   font-size: clamp(1rem, 1.4vw, 1.2rem);
 }
 .section-head.compact { margin-bottom: clamp(44px, 5vw, 72px); }
-.section-head > p, .yacht-copy > p, .shutter-copy > p { text-wrap: pretty; }
+.section-head > p, .yacht-copy > p, .shutter-copy > p, .hero-lede { text-wrap: pretty; }
 
 .button {
   display: inline-flex;
@@ -398,7 +398,7 @@ h3 { font-size: clamp(1.4rem, 2.2vw, 2rem); }
 .gallery-item-wide { grid-column: span 8; }
 .gallery-item-tall { grid-row: span 7; }
 @media (min-width: 901px) {
-  /* nine tiles, fixed places: the mosaic closes into a rectangle */
+  /* eleven tiles, fixed places: the mosaic closes into a rectangle */
   .gallery-item:nth-child(1) { grid-area: 1 / 1 / 6 / 9; }
   .gallery-item:nth-child(2) { grid-area: 1 / 9 / 8 / 13; }
   .gallery-item:nth-child(3) { grid-area: 6 / 1 / 11 / 5; }
@@ -408,6 +408,8 @@ h3 { font-size: clamp(1.4rem, 2.2vw, 2rem); }
   .gallery-item:nth-child(7) { grid-area: 16 / 1 / 21 / 5; }
   .gallery-item:nth-child(8) { grid-area: 16 / 5 / 21 / 9; }
   .gallery-item:nth-child(9) { grid-area: 16 / 9 / 21 / 13; }
+  .gallery-item:nth-child(10) { grid-area: 21 / 1 / 26 / 9; }
+  .gallery-item:nth-child(11) { grid-area: 21 / 9 / 26 / 13; }
 }
 .gallery-image { position: absolute; inset: 0; overflow: hidden; }
 .gallery-image::after {
@@ -422,6 +424,9 @@ h3 { font-size: clamp(1.4rem, 2.2vw, 2rem); }
   object-fit: cover;
   transition: transform 620ms var(--ease-out), filter 620ms var(--ease-out);
 }
+.gallery-item img.is-top { object-position: 50% 0; }
+.gallery-item img.is-high { object-position: 50% 25%; }
+.gallery-item img.is-low { object-position: 50% 75%; }
 .gallery-item:hover img, .photo-tile:hover img { filter: saturate(1.03) contrast(1.02); transform: scale(1.035); }
 .gallery-caption {
   position: absolute;
@@ -914,7 +919,7 @@ html:has(.lightbox[open]) { overflow: hidden; }
   .testimonial-top { flex-direction: column; align-items: flex-start; gap: 20px; }
   .carousel-controls { align-self: flex-start; }
   h1 { font-size: clamp(3rem, 14vw, 4.4rem); }
-  h2 { font-size: clamp(2.4rem, 11.4vw, 4rem); }
+  h2 { font-size: clamp(2.2rem, 11.4vw, 4rem); }
   .hero-copy { padding-bottom: calc(94px + env(safe-area-inset-bottom)); }
   .hero h1 { max-width: 10ch; font-size: clamp(2.85rem, 13vw, 4.2rem); }
   .hero-lede { max-width: 27rem; font-size: 1.0625rem; line-height: 1.45; }
@@ -1061,7 +1066,7 @@ html:has(.lightbox[open]) { overflow: hidden; }
     <nav aria-label="Mobilā navigācija" data-i18n-aria="mobileNav">
       <a href="#darbi" data-i18n="navWork">Darbi</a>
       <a href="#mebeles" data-i18n="navFurniture">Mēbeles</a>
-      <a href="#jahtas" data-i18n="navYachtsLong">Mēbeles un apdare jahtām</a>
+      <a href="#jahtas" data-i18n="navYachtsLong">Jahtām: mēbeles un apdare</a>
       <a href="#slegi" data-i18n="navShuttersLong">Logu slēģi</a>
       <a href="#par-mebtex" data-i18n="navAbout">Par MEBTEX</a>
       <a href="#kontakti" data-i18n="navContacts">Kontakti</a>
@@ -1118,20 +1123,20 @@ html:has(.lightbox[open]) { overflow: hidden; }
           <span class="gallery-caption"><strong data-i18n="galleryTitle2">Virtuve ar stūra plauktiem</strong><span data-i18n="galleryMeta2">Virtuves</span></span>
         </button>
         <button class="gallery-item" type="button" data-gallery-index="3">
-          <span class="gallery-image"><img src="img/prieksnama-kumode-s.webp" srcset="img/prieksnama-kumode-s.webp 800w, img/prieksnama-kumode-l.webp 1200w" sizes="(max-width: 680px) 100vw, (max-width: 900px) 50vw, 31vw" width="1200" height="1600" alt="Gaiši pelēka spīdīga kumode priekšnamā" data-i18n-alt="galleryAlt3"></span>
-          <span class="gallery-caption"><strong data-i18n="galleryTitle3">Priekšnama kumode</strong><span data-i18n="galleryMeta3">Korpusa mēbeles</span></span>
+          <span class="gallery-image"><img src="img/skapis-durvis-pelekas-s.webp" srcset="img/skapis-durvis-pelekas-s.webp 800w, img/skapis-durvis-pelekas-l.webp 858w" sizes="(max-width: 680px) 100vw, (max-width: 900px) 50vw, 31vw" width="858" height="1072" alt="Tumši pelēks iebūvēts skapis līdz griestiem un tāda paša toņa iekšdurvis" data-i18n-alt="galleryAlt3"></span>
+          <span class="gallery-caption"><strong data-i18n="galleryTitle3">Skapis un durvis vienā tonī</strong><span data-i18n="galleryMeta3">Skapji</span></span>
         </button>
         <button class="gallery-item gallery-item-wide" type="button" data-gallery-index="4">
-          <span class="gallery-image"><img src="img/plauktu-siena-l.webp" srcset="img/plauktu-siena-s.webp 800w, img/plauktu-siena-l.webp 1600w" sizes="(max-width: 900px) 100vw, 62vw" width="1600" height="1056" alt="Tumša plauktu sistēma ar restotiem sāniem" data-i18n-alt="galleryAlt4"></span>
-          <span class="gallery-caption"><strong data-i18n="galleryTitle4">Plauktu siena</strong><span data-i18n="galleryMeta4">Korpusa mēbeles</span></span>
+          <span class="gallery-image"><img src="img/gramatu-plaukti-s.webp" srcset="img/gramatu-plaukti-s.webp 800w, img/gramatu-plaukti-l.webp 1600w" sizes="(max-width: 680px) 100vw, (max-width: 900px) 50vw, 62vw" width="1600" height="1003" alt="Tumši grāmatu plaukti un skapji gar abām istabas sienām" data-i18n-alt="galleryAlt4"></span>
+          <span class="gallery-caption"><strong data-i18n="galleryTitle4">Iebūvēti grāmatu plaukti</strong><span data-i18n="galleryMeta4">Iebūvējamās mēbeles</span></span>
         </button>
         <button class="gallery-item gallery-item-tall" type="button" data-gallery-index="5">
-          <span class="gallery-image"><img src="img/virtuve-sala-balta-s.webp" srcset="img/virtuve-sala-balta-s.webp 800w, img/virtuve-sala-balta-l.webp 1200w" sizes="(max-width: 680px) 100vw, (max-width: 900px) 50vw, 31vw" width="1200" height="1600" alt="Balta virtuves sala ar zelta toņa līstēm un plīts virsmu" data-i18n-alt="galleryAlt5"></span>
-          <span class="gallery-caption"><strong data-i18n="galleryTitle5">Virtuves sala</strong><span data-i18n="galleryMeta5">Virtuves</span></span>
+          <span class="gallery-image"><img class="is-low" src="img/prieksnams-listes-s.webp" srcset="img/prieksnams-listes-s.webp 800w, img/prieksnams-listes-l.webp 891w" sizes="(max-width: 680px) 100vw, (max-width: 900px) 50vw, 31vw" width="891" height="1823" alt="Priekšnams ar līstu sienu, apaļu spoguli un piekaramu kumodi ar viļņotiem rokturiem" data-i18n-alt="galleryAlt5"></span>
+          <span class="gallery-caption"><strong data-i18n="galleryTitle5">Priekšnama mēbeles</strong><span data-i18n="galleryMeta5">Korpusa mēbeles</span></span>
         </button>
         <button class="gallery-item" type="button" data-gallery-index="6">
-          <span class="gallery-image"><img src="img/iekshdurvis-s.webp" srcset="img/iekshdurvis-s.webp 800w, img/iekshdurvis-l.webp 900w" sizes="(max-width: 680px) 100vw, (max-width: 900px) 50vw, 31vw" width="900" height="1600" alt="Divas gaišas iekšdurvis gaitenī" data-i18n-alt="galleryAlt6"></span>
-          <span class="gallery-caption"><strong data-i18n="galleryTitle6">Iekšdurvis gaitenī</strong><span data-i18n="galleryMeta6">Iekšdurvis</span></span>
+          <span class="gallery-image"><img class="is-top" src="img/durvis-arka-s.webp" srcset="img/durvis-arka-s.webp 800w, img/durvis-arka-l.webp 1200w" sizes="(max-width: 680px) 100vw, (max-width: 900px) 50vw, 31vw" width="1200" height="1558" alt="Baltas divviru durvis ar stikla rūtīm un arku virs tām" data-i18n-alt="galleryAlt6"></span>
+          <span class="gallery-caption"><strong data-i18n="galleryTitle6">Divviru durvis ar arku</strong><span data-i18n="galleryMeta6">Iekšdurvis</span></span>
         </button>
         <button class="gallery-item" type="button" data-gallery-index="7">
           <span class="gallery-image"><img src="img/piekarams-skapitis-l.webp" srcset="img/piekarams-skapitis-l.webp 768w" sizes="(max-width: 680px) 100vw, (max-width: 900px) 50vw, 31vw" width="768" height="1024" alt="Pie sienas piekarama kumode ar apgaismojumu apakšā" data-i18n-alt="galleryAlt7"></span>
@@ -1140,6 +1145,14 @@ html:has(.lightbox[open]) { overflow: hidden; }
         <button class="gallery-item" type="button" data-gallery-index="8">
           <span class="gallery-image"><img src="img/skapis-ieksa-l.webp" srcset="img/skapis-ieksa-l.webp 768w" sizes="(max-width: 680px) 100vw, (max-width: 900px) 50vw, 31vw" width="768" height="1024" alt="Atvērts skapis ar plauktiem un atvilktnēm iekšpusē" data-i18n-alt="galleryAlt8"></span>
           <span class="gallery-caption"><strong data-i18n="galleryTitle8">Skapis ar atvilktnēm iekšpusē</strong><span data-i18n="galleryMeta8">Skapji</span></span>
+        </button>
+        <button class="gallery-item gallery-item-wide" type="button" data-gallery-index="9">
+          <span class="gallery-image"><img src="img/skapis-zem-kapnem-s.webp" srcset="img/skapis-zem-kapnem-s.webp 800w, img/skapis-zem-kapnem-l.webp 1200w" sizes="(max-width: 680px) 100vw, (max-width: 900px) 50vw, 62vw" width="1200" height="864" alt="Balts iebūvēts skapis bez rokturiem zem kāpnēm" data-i18n-alt="galleryAlt9"></span>
+          <span class="gallery-caption"><strong data-i18n="galleryTitle9">Skapis zem kāpnēm</strong><span data-i18n="galleryMeta9">Iebūvējamās mēbeles</span></span>
+        </button>
+        <button class="gallery-item" type="button" data-gallery-index="10">
+          <span class="gallery-image"><img class="is-high" src="img/gultas-galvgalis-s.webp" srcset="img/gultas-galvgalis-s.webp 800w, img/gultas-galvgalis-l.webp 891w" sizes="(max-width: 680px) 100vw, (max-width: 900px) 50vw, 31vw" width="891" height="1116" alt="Mīksts tumši pelēks gultas galvgalis koka toņa rāmī ar apgaismojumu un piekarams naktsgaldiņš pie ķieģeļu sienas" data-i18n-alt="galleryAlt10"></span>
+          <span class="gallery-caption"><strong data-i18n="galleryTitle10">Gultas galvgalis ar apgaismojumu</strong><span data-i18n="galleryMeta10">Guļamistabas mēbeles</span></span>
         </button>
       </div>
     </div>
@@ -1168,9 +1181,9 @@ html:has(.lightbox[open]) { overflow: hidden; }
             <p data-category-description>Virtuves mēbeles un konstrukcijas.</p>
             <a class="text-link" href="#pieteikums"><span data-i18n="discussProject">Pārrunāt projektu</span><svg aria-hidden="true" viewBox="0 0 20 20"><path d="M4 10h11M11 6l4 4-4 4"/></svg></a>
           </div>
-          <div class="category-stub" data-category-stub data-zaglushka="jūsu darbu foto: galdi, biroja mēbeles, vannas istabas mēbeles" hidden>
+          <div class="category-stub" data-category-stub data-zaglushka="jūsu darbu foto: biroja mēbeles" hidden>
             <p class="zg-tag" data-i18n="stubTag">Vajadzīgs no jums</p>
-            <p data-category-stub-text>Šeit būs jūsu darbu foto: galdi.</p>
+            <p data-category-stub-text>Šeit būs jūsu darbu foto: biroja mēbeles.</p>
           </div>
           <img data-category-image src="img/virtuve-telpa-l.webp" srcset="img/virtuve-telpa-s.webp 800w, img/virtuve-telpa-l.webp 1600w" sizes="(max-width: 900px) 100vw, 56vw" width="1600" height="1024" alt="Virtuves — MEBTEX darba piemērs">
         </div>
@@ -1455,14 +1468,14 @@ const translations = {
     navWork: "Darbi",
     navFurniture: "Mēbeles",
     navYachts: "Jahtām",
-    navYachtsLong: "Mēbeles un apdare jahtām",
+    navYachtsLong: "Jahtām: mēbeles un apdare",
     navShutters: "Slēģi",
     navShuttersLong: "Logu slēģi",
     navAbout: "Par MEBTEX",
     navContacts: "Kontakti",
     ctaQuote: "Saņemt cenas piedāvājumu",
     heroProof: "Galdniecības amatnieku uzņēmums kopš 2005. gada",
-    heroTitle: "Mēbeles pēc individuāla pasūtījuma",
+    heroTitle: "Mēbeles pēc individuāla pasūtījuma",
     heroLede: "Izgatavojam virtuves, skapjus, galdus, iekšdurvis un citus interjera priekšmetus.",
     ctaWork: "Apskatīt darbus",
     factFounded: "dibināšanas gads",
@@ -1482,17 +1495,17 @@ const translations = {
     galleryAlt2: "Virtuve ar koka toņa frontēm, stūra plauktiem un ķieģeļu sienu",
     galleryTitle2: "Virtuve ar stūra plauktiem",
     galleryMeta2: "Virtuves",
-    galleryAlt3: "Gaiši pelēka spīdīga kumode priekšnamā",
-    galleryTitle3: "Priekšnama kumode",
-    galleryMeta3: "Korpusa mēbeles",
-    galleryAlt4: "Tumša plauktu sistēma ar restotiem sāniem",
-    galleryTitle4: "Plauktu siena",
-    galleryMeta4: "Korpusa mēbeles",
-    galleryAlt5: "Balta virtuves sala ar zelta toņa līstēm un plīts virsmu",
-    galleryTitle5: "Virtuves sala",
-    galleryMeta5: "Virtuves",
-    galleryAlt6: "Divas gaišas iekšdurvis gaitenī",
-    galleryTitle6: "Iekšdurvis gaitenī",
+    galleryAlt3: "Tumši pelēks iebūvēts skapis līdz griestiem un tāda paša toņa iekšdurvis",
+    galleryTitle3: "Skapis un durvis vienā tonī",
+    galleryMeta3: "Skapji",
+    galleryAlt4: "Tumši grāmatu plaukti un skapji gar abām istabas sienām",
+    galleryTitle4: "Iebūvēti grāmatu plaukti",
+    galleryMeta4: "Iebūvējamās mēbeles",
+    galleryAlt5: "Priekšnams ar līstu sienu, apaļu spoguli un piekaramu kumodi ar viļņotiem rokturiem",
+    galleryTitle5: "Priekšnama mēbeles",
+    galleryMeta5: "Korpusa mēbeles",
+    galleryAlt6: "Baltas divviru durvis ar stikla rūtīm un arku virs tām",
+    galleryTitle6: "Divviru durvis ar arku",
     galleryMeta6: "Iekšdurvis",
     galleryAlt7: "Pie sienas piekarama kumode ar apgaismojumu apakšā",
     galleryTitle7: "Piekarama kumode ar apgaismojumu",
@@ -1500,6 +1513,12 @@ const translations = {
     galleryAlt8: "Atvērts skapis ar plauktiem un atvilktnēm iekšpusē",
     galleryTitle8: "Skapis ar atvilktnēm iekšpusē",
     galleryMeta8: "Skapji",
+    galleryAlt9: "Balts iebūvēts skapis bez rokturiem zem kāpnēm",
+    galleryTitle9: "Skapis zem kāpnēm",
+    galleryMeta9: "Iebūvējamās mēbeles",
+    galleryAlt10: "Mīksts tumši pelēks gultas galvgalis koka toņa rāmī ar apgaismojumu un piekarams naktsgaldiņš pie ķieģeļu sienas",
+    galleryTitle10: "Gultas galvgalis ar apgaismojumu",
+    galleryMeta10: "Guļamistabas mēbeles",
     categoriesKicker: "Iespējas",
     categoriesTitle: "Ko mēs izgatavojam",
     categoriesIntro: "No galdiem un virtuvēm līdz letēm un veikala aprīkojumam.",
@@ -1638,15 +1657,15 @@ const translations = {
     navWork: "Работы",
     navFurniture: "Мебель",
     navYachts: "Для яхт",
-    navYachtsLong: "Мебель и отделка для яхт",
+    navYachtsLong: "Для яхт: мебель и отделка",
     navShutters: "Ставни",
     navShuttersLong: "Оконные ставни",
     navAbout: "О MEBTEX",
     navContacts: "Контакты",
     ctaQuote: "Запросить расчёт цены",
     heroProof: "Столярное ремесленное предприятие с 2005 года",
-    heroTitle: "Мебель на заказ",
-    heroLede: "Изготавливаем кухни, шкафы, столы, межкомнатные двери и другие предметы интерьера.",
+    heroTitle: "Мебель на заказ",
+    heroLede: "Изготавливаем кухни, шкафы, столы, межкомнатные двери и другие предметы интерьера.",
     ctaWork: "Смотреть работы",
     factFounded: "год основания",
     factLocation: "Līvas iela 13",
@@ -1665,17 +1684,17 @@ const translations = {
     galleryAlt2: "Кухня с фасадами в тоне дерева, угловыми полками и кирпичной стеной",
     galleryTitle2: "Кухня с угловыми полками",
     galleryMeta2: "Кухни",
-    galleryAlt3: "Светло-серый глянцевый комод в прихожей",
-    galleryTitle3: "Комод в прихожей",
-    galleryMeta3: "Корпусная мебель",
-    galleryAlt4: "Тёмный стеллаж с решётчатыми боковинами",
-    galleryTitle4: "Стеллаж во всю стену",
-    galleryMeta4: "Корпусная мебель",
-    galleryAlt5: "Белый кухонный остров с золотистыми планками и варочной панелью",
-    galleryTitle5: "Кухонный остров",
-    galleryMeta5: "Кухни",
-    galleryAlt6: "Две светлые межкомнатные двери в коридоре",
-    galleryTitle6: "Двери в коридоре",
+    galleryAlt3: "Тёмно-серый встроенный шкаф до потолка и межкомнатная дверь того же тона",
+    galleryTitle3: "Шкаф и дверь в одном тоне",
+    galleryMeta3: "Шкафы",
+    galleryAlt4: "Тёмные книжные стеллажи и шкафы вдоль обеих стен комнаты",
+    galleryTitle4: "Встроенные книжные стеллажи",
+    galleryMeta4: "Встроенная мебель",
+    galleryAlt5: "Прихожая: стена из реек, круглое зеркало и подвесная тумба с волнистыми ручками",
+    galleryTitle5: "Мебель для прихожей",
+    galleryMeta5: "Корпусная мебель",
+    galleryAlt6: "Белая двустворчатая остеклённая дверь с арочной фрамугой",
+    galleryTitle6: "Двустворчатая дверь с аркой",
     galleryMeta6: "Межкомнатные двери",
     galleryAlt7: "Подвесная тумба с подсветкой снизу",
     galleryTitle7: "Подвесная тумба с подсветкой",
@@ -1683,6 +1702,12 @@ const translations = {
     galleryAlt8: "Открытый шкаф с полками и ящиками внутри",
     galleryTitle8: "Шкаф с ящиками внутри",
     galleryMeta8: "Шкафы",
+    galleryAlt9: "Белый встроенный шкаф без ручек под лестницей",
+    galleryTitle9: "Шкаф под лестницей",
+    galleryMeta9: "Встроенная мебель",
+    galleryAlt10: "Мягкое тёмно-серое изголовье кровати в раме под дерево, с подсветкой, и подвесная тумбочка у кирпичной стены",
+    galleryTitle10: "Изголовье с подсветкой",
+    galleryMeta10: "Мебель для спальни",
     categoriesKicker: "Возможности",
     categoriesTitle: "Что мы изготавливаем",
     categoriesIntro: "От столов и кухонь до стоек и торгового оборудования.",
@@ -1752,7 +1777,7 @@ const translations = {
     proof3Title: "Профессиональный сервис",
     proof3Text: "Каждому клиенту — индивидуальный подход.",
     b2bKicker: "Для партнёров",
-    b2bTitle: "Услуги для профессионалов",
+    b2bTitle: "Услуги для профессионалов",
     b2bIntro: "SIA MEBTEX оказывает столярные услуги и профессионалам.",
     service0: "Распил деталей",
     service1: "Раскрой деталей",
@@ -1821,7 +1846,7 @@ const translations = {
     navWork: "Work",
     navFurniture: "Furniture",
     navYachts: "Yachts",
-    navYachtsLong: "Yacht furniture and finishing",
+    navYachtsLong: "Yachts: furniture and finishing",
     navShutters: "Shutters",
     navShuttersLong: "Window shutters",
     navAbout: "About MEBTEX",
@@ -1848,17 +1873,17 @@ const translations = {
     galleryAlt2: "Kitchen with wood-tone fronts, corner shelves and a brick wall",
     galleryTitle2: "Kitchen with corner shelves",
     galleryMeta2: "Kitchens",
-    galleryAlt3: "Light grey gloss sideboard in a hallway",
-    galleryTitle3: "Hallway sideboard",
-    galleryMeta3: "Cabinet furniture",
-    galleryAlt4: "Dark shelving unit with slatted sides",
-    galleryTitle4: "Shelving wall",
-    galleryMeta4: "Cabinet furniture",
-    galleryAlt5: "White kitchen island with gold-tone trims and a hob",
-    galleryTitle5: "Kitchen island",
-    galleryMeta5: "Kitchens",
-    galleryAlt6: "Two light interior doors in a corridor",
-    galleryTitle6: "Corridor doors",
+    galleryAlt3: "Dark grey floor-to-ceiling built-in wardrobe and an interior door in the same tone",
+    galleryTitle3: "Wardrobe and door in one tone",
+    galleryMeta3: "Cabinets",
+    galleryAlt4: "Dark bookshelves and cabinets along both walls of a room",
+    galleryTitle4: "Built-in bookshelves",
+    galleryMeta4: "Built-in furniture",
+    galleryAlt5: "Hallway with a slatted wall, a round mirror and a wall-hung cabinet with wavy handles",
+    galleryTitle5: "Hallway furniture",
+    galleryMeta5: "Cabinet furniture",
+    galleryAlt6: "White glazed double door with an arched transom",
+    galleryTitle6: "Arched double door",
     galleryMeta6: "Interior doors",
     galleryAlt7: "Wall-hung cabinet with lighting underneath",
     galleryTitle7: "Wall-hung cabinet with lighting",
@@ -1866,6 +1891,12 @@ const translations = {
     galleryAlt8: "Open wardrobe with shelves and drawers inside",
     galleryTitle8: "Wardrobe with inner drawers",
     galleryMeta8: "Cabinets",
+    galleryAlt9: "White handle-free built-in cabinet under a staircase",
+    galleryTitle9: "Under-stair cabinet",
+    galleryMeta9: "Built-in furniture",
+    galleryAlt10: "Upholstered dark grey headboard in a wood-tone frame with lighting and a wall-hung bedside table against a brick wall",
+    galleryTitle10: "Headboard with lighting",
+    galleryMeta10: "Bedroom furniture",
     categoriesKicker: "Capabilities",
     categoriesTitle: "What we make",
     categoriesIntro: "From tables and kitchens to counters and shop fittings.",
@@ -2014,9 +2045,9 @@ const testimonialData = {
 const categoryImages = [
   { name: "virtuve-telpa", l: 1600 },
   { name: "skapis-prieksnams", l: 1600 },
+  { name: "galds-bara", l: 1044 },
   null,
-  null,
-  null
+  { name: "vannas-skapis", l: 1263, position: "50% 15%" }
 ];
 const ogLocaleByLanguage = { lv: "lv_LV", ru: "ru_RU", en: "en_GB" };
 
@@ -2176,7 +2207,8 @@ function categorySources(index) {
   if (!item) return null;
   return {
     src: `img/${item.name}-l.webp`,
-    srcset: `img/${item.name}-s.webp 800w, img/${item.name}-l.webp ${item.l}w`
+    srcset: `img/${item.name}-s.webp 800w, img/${item.name}-l.webp ${item.l}w`,
+    position: item.position || ""
   };
 }
 
@@ -2212,6 +2244,7 @@ function updateCategory(index, animate = true) {
       image.srcset = sources.srcset;
       image.src = sources.src;
     }
+    image.style.objectPosition = sources.position;
     image.alt = `${dictionary[`category${safeIndex}`]} — ${dictionary.categoryImageAlt}`;
   } else if (stubText) {
     stubText.textContent = `${dictionary.categoryStub} ${dictionary[`category${safeIndex}`].toLocaleLowerCase(currentLanguage)}.`;
